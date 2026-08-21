@@ -1,0 +1,20 @@
+name: daily-crm-digest
+on:
+  schedule:
+    - cron: "0 6 * * *" # 09:30 IST = 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm ci || npm install
+      - run: npm run build
+      - name: CRM reminder
+        run: |
+          echo "Daily Gulf CRM check — 20-30/day cap"
+          echo "Open https://erowan.com/crm and update Follow-1/2/3"
+          echo "If using scripts: node scripts/apollo-free.js 'salon Dubai' && node scripts/bulk-research.js"
