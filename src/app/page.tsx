@@ -4,137 +4,124 @@ import { niches } from "@/lib/niches";
 import Link from "next/link";
 import Image from "next/image";
 
-/* Design Direction: Editorial Newsroom Brutalism
-   DFII: Impact 5 + Fit 4 + Feasibility 4 + Performance 4 - Risk 2 = 11 (Strong)
-   Anchor: If logo removed, you recognize Erowan by the brutal ink borders + vermillion pill + Fraunces display + vertical mono side text.
-   This avoids generic SaaS gradients by using paper/ink, brutalism, editorial hierarchy.
+/* R2: Professional, human-readable — fixes cramped, vertical, overload, font readability
+   Keeps editorial anchor but breathable: whitespace, 16px body, 1.6 line-height, clear price.
 */
 
 export default function Home() {
   return (
-    <div className="relative">
-      {/* Masthead strip */}
-      <div className="border-b border-[var(--line)] bg-[var(--paper-2)]">
-        <div className="mx-auto max-w-6xl px-4 py-1 flex justify-between text-[10px] font-mono tracking-widest text-[var(--muted)]">
-          <span>EST. 2024 • AHMEDABAD → WORLDWIDE</span>
-          <span className="hidden sm:inline">48H DELIVERY • $250 BASE • NO SUBSCRIPTION</span>
-          <span>EDITION № 07</span>
-        </div>
-      </div>
-
-      {/* Hero — asymmetrical editorial */}
-      <section className="mx-auto max-w-6xl px-4 pt-6 pb-8">
-        <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
-          <div className="relative">
-            <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest border border-[var(--line)] px-2 py-1 bg-white">● LIVE — TAKING WORLDWIDE CLIENTS</div>
-            <h1 className="mt-4 text-[42px] md:text-[64px] font-black leading-[0.85] tracking-tight" style={{fontFamily:"var(--font-display)"}}>
-              WEBSITES<br />
-              THAT <span className="bg-[var(--accent)] text-white px-2">BOOK</span><br />
-              & SELL<span className="text-[var(--accent)]">.</span>
+    <div>
+      <section className="mx-auto max-w-6xl px-4 pt-8 pb-10">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest border border-[var(--line)] px-2.5 py-1 bg-white rounded-full">● AVAILABLE WORLDWIDE — 48H DELIVERY</div>
+            <h1 className="mt-5 text-[40px] md:text-[56px] font-black leading-[0.95] tracking-tight" style={{fontFamily:"var(--font-display)"}}>
+              Websites<br />
+              that <span className="bg-[var(--accent)] text-white px-2">book</span><br />
+              & sell.
             </h1>
-            <div className="mt-3 flex items-baseline gap-3">
-              <span className="text-2xl font-black">$250</span>
-              <span className="text-xs font-mono text-[var(--muted)]">BASE • 48H • WORLDWIDE</span>
+            <div className="mt-4 flex items-baseline gap-3">
+              <span className="text-3xl font-black tracking-tight">$250</span>
+              <span className="text-sm text-zinc-600">base — 48 hours, no subscription</span>
             </div>
-            <p className="mt-4 text-[15px] leading-relaxed text-zinc-700 max-w-[46ch]">
-              Erowan — two friends in Ahmedabad shipping <em>booking-first</em> sites for salons, restaurants, clinics & real estate. Same quality as London agencies, 1/5th the price. No fake address, no subscription.
+            <p className="mt-5 text-[17px] leading-7 text-zinc-700 max-w-[48ch]">
+              Erowan is two friends in Ahmedabad making fast, booking-first websites for salons, restaurants, clinics and real estate — worldwide. Same quality as a London agency, a fifth of the price.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <a href="#niches" className="px-5 py-2.5 bg-[var(--ink)] text-white border border-[var(--line)] text-sm font-bold brutal-sm hover:translate-y-[-1px] transition">SEE NICHE DEMOS →</a>
-              <a href="https://wa.me/919999999999" className="px-5 py-2.5 bg-white border border-[var(--line)] text-sm font-bold">WHATSAPP US</a>
-              <a href="https://calendly.com" className="px-4 py-2.5 text-xs font-mono underline">BOOK 15-MIN →</a>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a href="#niches" className="px-6 py-3 bg-[var(--ink)] text-white text-sm font-bold border border-[var(--line)] hover:bg-zinc-800">See live demos →</a>
+              <a href="https://wa.me/919999999999" className="px-6 py-3 bg-white border border-[var(--line)] text-sm font-bold hover:bg-zinc-50">Chat on WhatsApp</a>
             </div>
-            <div className="mt-6 flex gap-6 text-xs font-mono border-t border-[var(--line)] pt-3">
-              <span><b>1,000+</b> components via shadcn</span>
-              <span className="hidden sm:inline"><b>22</b> live pages</span>
-              <span><b>48H</b> promise</span>
-            </div>
+            <div className="mt-5 text-xs font-mono text-zinc-500">Trusted worldwide • English • Wise / PayPal • Concept demos labeled honestly</div>
           </div>
-          {/* Overlapping image stack — differentiation anchor */}
-          <div className="relative h-[520px] hidden md:block">
-            <div className="absolute top-0 right-6 w-[78%] brutal bg-white p-2 rotate-[1deg]">
-              <Image src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop" alt="Salon" width={600} height={400} className="h-[180px] w-full object-cover border border-[var(--line)]" />
-              <div className="pt-2 flex justify-between text-xs font-mono"><span>SALONS • 4.9★ 312 reviews</span><span className="bg-[var(--accent)] text-white px-1">LIVE</span></div>
+          <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-white border border-[var(--line)] p-2 brutal-sm">
+                <Image src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&auto=format&fit=crop" alt="Salon" width={300} height={200} className="h-36 w-full object-cover border border-[var(--line)]" />
+                <div className="mt-2 text-xs font-mono">SALONS — 4.9★ Bookings</div>
+              </div>
+              <div className="bg-white border border-[var(--line)] p-2 brutal-sm mt-4">
+                <Image src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80&auto=format&fit=crop" alt="Restaurant" width={300} height={200} className="h-36 w-full object-cover border border-[var(--line)]" />
+                <div className="mt-2 text-xs font-mono">RESTAURANTS — Ordering</div>
+              </div>
             </div>
-            <div className="absolute top-28 left-0 w-[72%] brutal bg-white p-2 -rotate-[1.5deg]">
-              <Image src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&auto=format&fit=crop" alt="Restaurant" width={600} height={400} className="h-[160px] w-full object-cover border border-[var(--line)]" />
-              <div className="pt-2 text-xs font-mono">RESTAURANTS • NO COMMISSION ORDERING</div>
+            <div className="bg-white border border-[var(--line)] p-2 brutal-sm">
+              <Image src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80&auto=format&fit=crop" alt="Clinic" width={600} height={200} className="h-40 w-full object-cover border border-[var(--line)]" />
+              <div className="mt-2 flex justify-between text-xs font-mono"><span>CLINICS — Trust before booking</span><span className="bg-[var(--accent)] text-white px-1">48H</span></div>
             </div>
-            <div className="absolute bottom-0 right-0 w-[80%] brutal bg-white p-2 rotate-[0.8deg]">
-              <Image src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop" alt="Clinic" width={600} height={400} className="h-[170px] w-full object-cover border border-[var(--line)]" />
-              <div className="pt-2 flex justify-between text-xs font-mono"><span>CLINICS • TRUST BEFORE BOOK</span><span>48H</span></div>
+            {/* Horizontal, not vertical */}
+            <div className="flex flex-wrap gap-2 text-[11px] font-mono tracking-widest justify-center border border-[var(--line)] bg-[var(--paper-2)] py-2 px-3 rounded-full">
+              <span>WORLDWIDE</span><span>•</span><span>DUBAI</span><span>•</span><span>NEW YORK</span><span>•</span><span>LONDON</span><span>•</span><span>BERLIN</span><span>•</span><span>MIAMI</span>
             </div>
-            <div className="absolute -left-2 top-1/2 -rotate-90 text-[10px] tracking-[0.2em] font-mono text-[var(--muted)]">WORLDWIDE • DUBAI • NEW YORK • LONDON • BERLIN • MIAMI</div>
           </div>
         </div>
       </section>
 
-      {/* Niches — classifieds */}
-      <section id="niches" className="mx-auto max-w-6xl px-4 py-6">
-        <div className="flex items-baseline justify-between border-b border-[var(--line)] pb-2">
-          <h2 className="text-xl font-black tracking-tight" style={{fontFamily:"var(--font-display)"}}>PICK YOUR NICHE — SEE LIVE DEMOS</h2>
-          <span className="hidden sm:inline text-xs font-mono text-[var(--muted)]">WORLDWIDE SPECIALIST PAGES • EACH LOOKS BESPOKE</span>
+      <section id="niches" className="mx-auto max-w-6xl px-4 py-8">
+        <div className="border-b border-[var(--line)] pb-3 flex items-baseline justify-between">
+          <h2 className="text-2xl font-black tracking-tight" style={{fontFamily:"var(--font-display)"}}>Pick your niche</h2>
+          <span className="text-xs font-mono text-zinc-500">EACH PAGE LOOKS BESPOKE — WORLDWIDE</span>
         </div>
-        <div className="mt-4 grid md:grid-cols-2 gap-4">
+        <p className="mt-2 text-sm text-zinc-600 max-w-2xl">Choose your business type — each page has 2 live demos, features, and transparent pricing. No generic “we do everything” pitch.</p>
+        <div className="mt-6 grid md:grid-cols-2 gap-5">
           {niches.map((n) => (
             <NicheCard key={n.slug} niche={n} />
           ))}
         </div>
       </section>
 
-      {/* Pricing — editorial table */}
-      <section className="mx-auto max-w-6xl px-4 py-6">
-        <Pricing />
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <div className="text-center">
+          <h2 className="text-3xl font-black" style={{fontFamily:"var(--font-display)"}}>Simple pricing. No surprises.</h2>
+          <p className="mt-2 text-zinc-600">Most clients pay $250–$400. One price, 48 hours.</p>
+        </div>
+        <div className="mt-8">
+          <Pricing />
+        </div>
       </section>
 
-      {/* Real clients — evidence wall */}
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-lg font-black" style={{fontFamily:"var(--font-display)"}}>3 REAL CLIENT SITES</h2>
-          <span className="text-xs font-mono text-[var(--muted)]">REPLACE WITH YOUR LIVE LINKS</span>
-        </div>
-        <p className="text-sm text-zinc-600 font-mono">Keep demos labeled “Concept” — clients stay honest.</p>
+        <h2 className="text-xl font-black" style={{fontFamily:"var(--font-display)"}}>Real client sites</h2>
+        <p className="text-sm text-zinc-600">Your 3 live sites will go here — demos stay labeled “Concept”.</p>
         <div className="mt-4 grid md:grid-cols-3 gap-4">
           {[
             { title: "Client 1", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop" },
             { title: "Client 2", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop" },
             { title: "Client 3", img: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&q=80&auto=format&fit=crop" },
           ].map((c, i) => (
-            <div key={i} className="brutal-sm bg-white overflow-hidden">
-              <Image src={c.img} alt={c.title} width={400} height={200} className="h-36 w-full object-cover border-b border-[var(--line)]" />
+            <div key={i} className="bg-white border border-[var(--line)] overflow-hidden">
+              <Image src={c.img} alt={c.title} width={400} height={200} className="h-40 w-full object-cover border-b border-[var(--line)]" />
               <div className="p-4">
-                <div className="text-[10px] font-mono tracking-widest text-[var(--muted)]">REAL CLIENT {i+1} — WORLDWIDE</div>
-                <div className="mt-1 font-bold">{c.title} — your live link here</div>
+                <div className="text-xs font-mono tracking-widest text-zinc-500">REAL CLIENT {i+1}</div>
+                <div className="mt-1 font-bold">{c.title} — add your link</div>
                 <div className="mt-1 text-sm text-zinc-600">Add outcome: “+22% bookings in 2 weeks”.</div>
-                <a href="#" className="mt-3 inline-block text-xs font-mono underline">VIEW SITE →</a>
+                <a href="#" className="mt-3 inline-block text-sm font-bold underline">View site →</a>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* How we work — brutal steps */}
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <div className="border border-[var(--line)] bg-[var(--paper-2)] p-6">
-          <h3 className="font-black tracking-tight" style={{fontFamily:"var(--font-display)"}}>HOW WE HIT 48 HOURS — WORLDWIDE</h3>
-          <ol className="mt-3 grid md:grid-cols-4 gap-3 text-sm">
-            <li className="bg-white border border-[var(--line)] p-4"><span className="font-black">01. YOU PICK NICHE</span><br /><span className="text-zinc-600 font-mono text-xs">Salon / Restaurant etc. We clone closest demo.</span></li>
-            <li className="bg-white border border-[var(--line)] p-4"><span className="font-black">02. WE TAILOR</span><br /><span className="text-zinc-600 font-mono text-xs">Logo, colors, services, currency.</span></li>
-            <li className="bg-white border border-[var(--line)] p-4"><span className="font-black">03. YOU REVIEW</span><br /><span className="text-zinc-600 font-mono text-xs">Live link on phone. 1 tweak round.</span></li>
-            <li className="bg-[var(--ink)] text-white border border-[var(--line)] p-4"><span className="font-black">04. LAUNCH</span><br /><span className="text-zinc-400 font-mono text-xs">Your domain, Wise/PayPal invoice.</span></li>
+        <div className="bg-[var(--paper-2)] border border-[var(--line)] p-6 md:p-8">
+          <h3 className="font-black text-lg" style={{fontFamily:"var(--font-display)"}}>How it works — 48 hours</h3>
+          <ol className="mt-4 grid md:grid-cols-4 gap-4 text-sm">
+            <li className="bg-white border border-[var(--line)] p-5"><div className="font-black text-xs tracking-widest">01 — PICK NICHE</div><div className="mt-2 text-zinc-700 leading-relaxed">Choose salon, restaurant, clinic or real estate. We clone the closest demo.</div></li>
+            <li className="bg-white border border-[var(--line)] p-5"><div className="font-black text-xs tracking-widest">02 — WE TAILOR</div><div className="mt-2 text-zinc-700 leading-relaxed">Your logo, colors, services, and currency. No template look.</div></li>
+            <li className="bg-white border border-[var(--line)] p-5"><div className="font-black text-xs tracking-widest">03 — YOU REVIEW</div><div className="mt-2 text-zinc-700 leading-relaxed">Live link on your phone. One round of tweaks included.</div></li>
+            <li className="bg-[var(--ink)] text-white border border-[var(--line)] p-5"><div className="font-black text-xs tracking-widest text-[var(--accent-2)]">04 — LAUNCH</div><div className="mt-2 text-zinc-300 leading-relaxed">Your domain, invoiced via Wise/PayPal.</div></li>
           </ol>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-12">
-        <div className="bg-[var(--ink)] text-white border border-[var(--line)] p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4 brutal">
+        <div className="bg-[var(--ink)] text-white p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 border border-[var(--line)]">
           <div>
-            <div className="font-black text-lg" style={{fontFamily:"var(--font-display)"}}>READY TO SEE YOUR SITE REBUILT AS A DEMO?</div>
-            <div className="text-sm text-zinc-400 mt-1 font-mono">60-sec Loom of 3 fixes — free, worldwide. No spam.</div>
+            <div className="font-black text-xl" style={{fontFamily:"var(--font-display)"}}>See your site rebuilt as a demo — free.</div>
+            <div className="text-sm text-zinc-400 mt-2">We record a 60-second Loom of 3 fixes. No spam, worldwide.</div>
           </div>
-          <div className="flex gap-2">
-            <Link href="/salons" className="px-5 py-2.5 bg-white text-[var(--ink)] text-sm font-black border border-white hover:bg-[var(--accent)] hover:text-white hover:border-[var(--line)]">START WITH SALONS →</Link>
-            <a href="https://wa.me/919999999999" className="px-5 py-2.5 border border-white/30 text-sm font-mono">WHATSAPP</a>
+          <div className="flex gap-3">
+            <Link href="/salons" className="px-6 py-3 bg-white text-[var(--ink)] text-sm font-black">Start with salons →</Link>
+            <a href="https://wa.me/919999999999" className="px-6 py-3 border border-white/30 text-sm">WhatsApp</a>
           </div>
         </div>
       </section>
