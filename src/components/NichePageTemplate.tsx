@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function NichePageTemplate({ niche }: { niche: Niche }) {
   return (
     <div>
-      <section className="mx-auto max-w-6xl px-4 pt-10 pb-6">
+      <section className="mx-auto max-w-7xl px-6 pt-10 pb-6">
         <div className="text-xs uppercase tracking-widest text-zinc-500">{niche.shortTitle} • Worldwide • 48h</div>
         <h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">{niche.title}</h1>
         <p className="mt-2 text-lg text-zinc-600">{niche.tagline}</p>
@@ -31,7 +31,7 @@ export default function NichePageTemplate({ niche }: { niche: Niche }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-6">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <div className="rounded-2xl border border-zinc-200 p-6 bg-white">
           <h3 className="font-semibold">What you get — {niche.shortTitle} specific</h3>
           <ul className="mt-3 grid md:grid-cols-2 gap-2 text-sm text-zinc-700">
@@ -42,7 +42,7 @@ export default function NichePageTemplate({ niche }: { niche: Niche }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-6">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <div className="rounded-2xl border border-zinc-200 p-6">
           <h3 className="font-semibold">Pricing — {niche.priceNote}</h3>
           <div className="mt-3 grid md:grid-cols-3 gap-4 text-sm">
@@ -65,7 +65,7 @@ export default function NichePageTemplate({ niche }: { niche: Niche }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-6">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <h3 className="font-semibold">Live concept demos</h3>
         <p className="text-sm text-zinc-600 mt-1">Concept demos — not real clients — labeled honestly. Open on phone to feel the booking flow.</p>
         <div className="mt-4 grid md:grid-cols-2 gap-4">
@@ -80,7 +80,7 @@ export default function NichePageTemplate({ niche }: { niche: Niche }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-6">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <h3 className="font-semibold">FAQ — {niche.shortTitle}</h3>
         <div className="mt-3 grid md:grid-cols-3 gap-4">
           {niche.faq.map((f) => (
@@ -92,7 +92,7 @@ export default function NichePageTemplate({ niche }: { niche: Niche }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-12">
+      <section className="mx-auto max-w-7xl px-4 pb-12">
         <div className="rounded-2xl bg-zinc-900 text-white p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="font-semibold">Want this for your {niche.shortTitle.toLowerCase()}?</div>

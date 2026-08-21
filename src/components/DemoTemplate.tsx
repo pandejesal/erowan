@@ -16,20 +16,20 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
   return (
     <div className="min-h-screen bg-white">
       <div className="bg-amber-50 border-b border-amber-200">
-        <div className="mx-auto max-w-6xl px-4 py-2 flex items-center justify-between">
+        <div className="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
           <DemoBadge />
           <Link href="/" className="text-xs underline text-zinc-600">← Back to Erowan</Link>
         </div>
       </div>
       <header className="border-b border-zinc-200 sticky top-0 bg-white/90 backdrop-blur z-10">
-        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+        <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <div className="font-bold tracking-tight">{business} <span className="font-normal text-zinc-500 text-sm">• {location}</span></div>
           <a href="https://wa.me/919999999999" className="text-sm px-4 py-2 rounded-full bg-zinc-900 text-white hover:bg-zinc-800">{primaryCta}</a>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-4 py-8 grid md:grid-cols-2 gap-8 items-center">
+      <section className="mx-auto max-w-7xl px-4 py-8 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <div className="text-xs uppercase tracking-widest text-zinc-500">{niche} • ★ 4.9 (312 reviews)</div>
           <h1 className="mt-2 text-3xl md:text-4xl font-bold leading-tight">{heroTitle}</h1>
@@ -49,7 +49,7 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
       </section>
 
       {/* Stats */}
-      <section className="mx-auto max-w-6xl px-4">
+      <section className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-3 gap-3">
           <div className="rounded-xl bg-zinc-900 text-white p-4 text-center"><div className="text-xl font-bold">4.9 ★</div><div className="text-xs text-zinc-400">312 reviews</div></div>
           <div className="rounded-xl border border-zinc-200 p-4 text-center"><div className="text-xl font-bold">10k+</div><div className="text-xs text-zinc-500">Happy clients</div></div>
@@ -58,7 +58,7 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
       </section>
 
       {/* Services + Pricing */}
-      <section id="services" className="mx-auto max-w-6xl px-4 py-8">
+      <section id="services" className="mx-auto max-w-7xl px-4 py-8">
         <h2 className="font-semibold text-lg">Services & Pricing</h2>
         <p className="text-sm text-zinc-600">Transparent, no hidden fees. Tap to book.</p>
         <div className="mt-4 grid md:grid-cols-3 gap-3">
@@ -72,7 +72,7 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
       </section>
 
       {/* Gallery */}
-      <section className="mx-auto max-w-6xl px-4 py-6">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <h3 className="font-semibold">Gallery</h3>
         <div className="mt-3 grid grid-cols-3 gap-3">
           <img src={image || "https://picsum.photos/seed/a/400/300"} alt="gallery 1" className="rounded-xl h-32 w-full object-cover border border-zinc-200" />
@@ -82,7 +82,7 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
       </section>
 
       {/* Testimonials */}
-      <section className="mx-auto max-w-6xl px-4 py-6">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <h3 className="font-semibold">Loved by clients worldwide</h3>
         <div className="mt-3 grid md:grid-cols-3 gap-3">
           {[
@@ -99,7 +99,7 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
       </section>
 
       {/* Features */}
-      <section className="mx-auto max-w-6xl px-4 py-6">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <div className="rounded-2xl border border-zinc-200 p-6 bg-white">
           <h3 className="font-semibold">Why this works</h3>
           <div className="mt-3 grid md:grid-cols-3 gap-4 text-sm">
@@ -111,7 +111,7 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-6xl px-4 py-6">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <div className="rounded-2xl bg-zinc-900 text-white p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="font-semibold">{primaryCta} — reply worldwide, 48h delivery</div>
@@ -122,7 +122,7 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
       </section>
 
       {/* Map + Contact */}
-      <section className="mx-auto max-w-6xl px-4 py-6 grid md:grid-cols-2 gap-4">
+      <section className="mx-auto max-w-7xl px-4 py-6 grid md:grid-cols-2 gap-4">
         <div className="rounded-xl border border-zinc-200 p-4">
           <div className="font-medium text-sm">Visit us</div>
           <div className="mt-2 rounded-lg bg-zinc-100 border border-zinc-200 h-32 grid place-items-center text-xs text-zinc-500">Map embed placeholder — {location}</div>
@@ -139,7 +139,7 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-6">
+      <section className="mx-auto max-w-7xl px-4 py-6">
         <div className="rounded-xl border border-dashed border-zinc-300 p-4 text-xs text-zinc-600">
           This is a <strong>concept demo</strong> built by Erowan — not a real client. Replace with your business in 48 hours: logo, colors, real services, map & reviews.
         </div>

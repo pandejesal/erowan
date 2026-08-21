@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-6 space-y-6">
+    <div className="mx-auto max-w-7xl px-4 py-6 space-y-6">
       <div className="flex items-baseline justify-between">
         <h1 className="text-2xl font-bold tracking-tight">Outreach CRM — Gulf</h1>
         <span className="text-xs text-zinc-500">LocalStorage • Free • 20-30/day safe</span>

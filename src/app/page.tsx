@@ -11,7 +11,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div>
-      <section className="mx-auto max-w-6xl px-4 pt-8 pb-10">
+      <section className="mx-auto max-w-7xl px-6 pt-8 pb-10">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest border border-[var(--line)] px-2.5 py-1 bg-white rounded-full">● AVAILABLE WORLDWIDE — 48H DELIVERY</div>
@@ -56,7 +56,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="niches" className="mx-auto max-w-6xl px-4 py-8">
+      <section id="niches" className="mx-auto max-w-7xl px-6 py-8">
         <div className="border-b border-[var(--line)] pb-3 flex items-baseline justify-between">
           <h2 className="text-2xl font-black tracking-tight" style={{fontFamily:"var(--font-display)"}}>Pick your niche</h2>
           <span className="text-xs font-mono text-zinc-500">EACH PAGE LOOKS BESPOKE — WORLDWIDE</span>
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10">
+      <section className="mx-auto max-w-7xl px-6 py-10">
         <div className="text-center">
           <h2 className="text-3xl font-black" style={{fontFamily:"var(--font-display)"}}>Simple pricing. No surprises.</h2>
           <p className="mt-2 text-zinc-600">Most clients pay $250–$400. One price, 48 hours.</p>
@@ -79,7 +79,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-8">
+      <section className="mx-auto max-w-7xl px-6 py-8">
         <h2 className="text-xl font-black" style={{fontFamily:"var(--font-display)"}}>Real client sites</h2>
         <p className="text-sm text-zinc-600">Your 3 live sites will go here — demos stay labeled “Concept”.</p>
         <div className="mt-4 grid md:grid-cols-3 gap-4">
@@ -101,7 +101,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-8">
+      <section className="mx-auto max-w-7xl px-6 py-8">
         <div className="bg-[var(--paper-2)] border border-[var(--line)] p-6 md:p-8">
           <h3 className="font-black text-lg" style={{fontFamily:"var(--font-display)"}}>How it works — 48 hours</h3>
           <ol className="mt-4 grid md:grid-cols-4 gap-4 text-sm">
@@ -113,7 +113,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-12">
+      <section className="mx-auto max-w-7xl px-6 pb-12">
         <div className="bg-[var(--ink)] text-white p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 border border-[var(--line)]">
           <div>
             <div className="font-black text-xl" style={{fontFamily:"var(--font-display)"}}>See your site rebuilt as a demo — free.</div>
