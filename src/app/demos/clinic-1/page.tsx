@@ -8,6 +8,7 @@ export default function Page() {
       heroTitle="Trust before the chair"
       heroSub="DHA-licensed doctors, before/after (consent), insurance list, appointment request — not false real-time."
       primaryCta="Request Appointment"
+      image="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format&fit=crop"
       services={[
         { name: "Consultation", price: "AED 150" },
         { name: "Cleaning + Polish", price: "AED 300" },

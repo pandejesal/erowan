@@ -3,18 +3,19 @@ export default function Page() {
   return (
     <DemoTemplate
       business="Al Hadi Grill"
-      location="Jeddah — Corniche"
-      niche="Restaurants & Cafes — Jeddah"
-      heroTitle="Jeddah grill, ordered in seconds"
-      heroSub="Arabic + English menu, modifiers (spice, rice), WhatsApp checkout. No Talabat cut."
+      location="London — Soho"
+      niche="Restaurants & Cafes — London"
+      heroTitle="London grill, ordered in seconds"
+      heroSub="English menu, modifiers (spice, sides), WhatsApp checkout. No commission."
       primaryCta="Order WhatsApp"
+      image="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80&auto=format&fit=crop"
       services={[
-        { name: "Mixed Grill Platter", price: "SAR 85" },
-        { name: "Shish Tawook", price: "SAR 45" },
-        { name: "Kabsa Lahm", price: "SAR 65" },
-        { name: "Hummus + Bread", price: "SAR 22" },
-        { name: "Fresh Juices", price: "SAR 18" },
-        { name: "Family Feast", price: "SAR 199" },
+        { name: "Mixed Grill Platter", price: "£22" },
+        { name: "Shish Tawook", price: "£12" },
+        { name: "Kabsa Lahm", price: "£16" },
+        { name: "Hummus + Bread", price: "£6" },
+        { name: "Fresh Juices", price: "£5" },
+        { name: "Family Feast", price: "£45" },
       ]}
     />
   );

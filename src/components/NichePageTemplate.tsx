@@ -1,17 +1,26 @@
 import { Niche } from "@/lib/niches";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function NichePageTemplate({ niche }: { niche: Niche }) {
   return (
     <div>
       <section className="mx-auto max-w-6xl px-4 pt-10 pb-6">
-        <div className="text-xs uppercase tracking-widest text-zinc-500">{niche.shortTitle} • Gulf • 48h</div>
+        <div className="text-xs uppercase tracking-widest text-zinc-500">{niche.shortTitle} • Worldwide • 48h</div>
         <h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">{niche.title}</h1>
         <p className="mt-2 text-lg text-zinc-600">{niche.tagline}</p>
         <div className="mt-3 inline-block text-sm px-3 py-1.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
           {niche.pain}
         </div>
         <p className="mt-4 max-w-3xl text-zinc-700 leading-relaxed">{niche.description}</p>
+        <div className="mt-4 grid grid-cols-2 gap-3 max-w-3xl">
+          {niche.demos.map((d) => (
+            <div key={d.id} className="rounded-xl overflow-hidden border border-zinc-200">
+              <Image src={d.image} alt={d.name} width={400} height={200} className="h-28 w-full object-cover" />
+              <div className="p-2 text-xs font-medium">{d.name}</div>
+            </div>
+          ))}
+        </div>
         <div className="mt-5 flex flex-wrap gap-3">
           {niche.demos.map((d) => (
             <Link key={d.id} href={d.href} className="px-4 py-2 rounded-full bg-zinc-900 text-white text-sm hover:bg-zinc-800">

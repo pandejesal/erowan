@@ -5,7 +5,7 @@ export default function Footer() {
         <div>
           <div className="font-semibold">Erowan</div>
           <p className="mt-2 text-zinc-600 leading-relaxed">
-            India-based (Ahmedabad, IST UTC+5:30), serving Gulf remotely. Transparent arbitrage — same quality, 48-hour delivery, Gulf-hours support.
+            India-based (Ahmedabad, IST UTC+5:30), serving clients worldwide — from Dubai & London to New York & Singapore. Transparent remote — same quality, 48-hour delivery, worldwide support.
           </p>
           <p className="mt-3 text-xs text-zinc-500">
             Base $250 (~920 AED) + $150 for booking/ordering/listings. No hidden fees.

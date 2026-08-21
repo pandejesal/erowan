@@ -10,7 +10,7 @@ export default function Header() {
           </div>
           <span className="font-semibold tracking-tight">Erowan</span>
           <span className="hidden sm:inline text-xs text-zinc-500 ml-1">
-            Ahmedabad → Gulf
+            Worldwide • 48h
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-5 text-sm">

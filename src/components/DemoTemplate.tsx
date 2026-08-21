@@ -10,10 +10,10 @@ type Props = {
   heroSub: string;
   primaryCta: string;
   services: { name: string; price: string }[];
-  accent?: string;
+  image?: string;
 };
 
-export default function DemoTemplate({ business, location, niche, heroTitle, heroSub, primaryCta, services }: Props) {
+export default function DemoTemplate({ business, location, niche, heroTitle, heroSub, primaryCta, services, image }: Props) {
   return (
     <div className="min-h-screen bg-white">
       <div className="bg-amber-50 border-b border-amber-200">
@@ -44,7 +44,7 @@ export default function DemoTemplate({ business, location, niche, heroTitle, her
         </div>
         <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-0 overflow-hidden aspect-[4/3] grid place-items-center text-zinc-400 text-sm">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`https://picsum.photos/seed/${encodeURIComponent(business)}/800/600`} alt={`${business} hero`} className="h-full w-full object-cover" />
+          <img src={image || `https://picsum.photos/seed/${encodeURIComponent(business)}/800/600`} alt={`${business} hero`} className="h-full w-full object-cover" />
         </div>
       </section>
       <section id="services" className="mx-auto max-w-6xl px-4 py-8">

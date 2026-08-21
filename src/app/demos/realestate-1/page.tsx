@@ -6,8 +6,9 @@ export default function Page() {
       location="Dubai Hills"
       niche="Real Estate — Dubai"
       heroTitle="Leads, not just listings"
-      heroSub="Filter by beds, area, AED. WhatsApp lead capture — portal independence for Gulf realtors."
+      heroSub="Filter by beds, area, AED. WhatsApp lead capture — portal independence."
       primaryCta="WhatsApp Listings"
+      image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop"
       services={[
         { name: "1BR — Dubai Hills", price: "AED 1.1M" },
         { name: "2BR — Creek Harbour", price: "AED 1.8M" },

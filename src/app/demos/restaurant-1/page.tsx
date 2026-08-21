@@ -8,6 +8,7 @@ export default function Page() {
       heroTitle="Menu that orders — not PDFs"
       heroSub="Tap, customize, WhatsApp order — zero commission. Table reserve + daily offer reels."
       primaryCta="Order Now"
+      image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&auto=format&fit=crop"
       services={[
         { name: "Avocado Toast", price: "AED 38" },
         { name: "Shakshuka", price: "AED 42" },

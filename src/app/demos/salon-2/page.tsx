@@ -3,18 +3,19 @@ export default function Page() {
   return (
     <DemoTemplate
       business="Bloom Spa"
-      location="Riyadh — Olaya"
-      niche="Salons & Spas — Riyadh"
-      heroTitle="Riyadh’s calm — booked in one tap"
-      heroSub="Ladies-only spa with Arabic + English. Staff pages, real-time slots, WhatsApp confirmation."
+      location="New York — SoHo"
+      niche="Salons & Spas — New York"
+      heroTitle="NYC calm — booked in one tap"
+      heroSub="Boutique spa with English + Spanish. Staff pages, real-time slots, WhatsApp confirmation."
       primaryCta="Book Slot"
+      image="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop"
       services={[
-        { name: "Aroma Massage 60m", price: "SAR 280" },
-        { name: "Hydra Facial", price: "SAR 350" },
-        { name: "Wax Full Body", price: "SAR 200" },
-        { name: "Nail Art", price: "SAR 110" },
-        { name: "Hair Spa", price: "SAR 180" },
-        { name: "Bridal Package", price: "SAR 1200" },
+        { name: "Aroma Massage 60m", price: "$85" },
+        { name: "Hydra Facial", price: "$120" },
+        { name: "Wax Full Body", price: "$70" },
+        { name: "Nail Art", price: "$40" },
+        { name: "Hair Spa", price: "$65" },
+        { name: "Bridal Package", price: "$400" },
       ]}
     />
   );

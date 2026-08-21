@@ -8,6 +8,7 @@ export default function Page() {
       heroTitle="Book your glow — no call needed"
       heroSub="After-hours booking for busy Dubai women. See services, pick a slot, confirm on WhatsApp — in 30 seconds."
       primaryCta="Book Now"
+      image="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=800&q=80&auto=format&fit=crop"
       services={[
         { name: "Haircut + Blowdry", price: "AED 120" },
         { name: "Gel Manicure", price: "AED 90" },
