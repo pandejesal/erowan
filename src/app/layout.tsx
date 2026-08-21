@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
+
+const display = Fraunces({ subsets: ["latin"], weight: ["700","800","900"], variable: "--font-display", display: "swap" });
+const body = Instrument_Sans({ subsets: ["latin"], weight: ["400","500","600"], variable: "--font-body", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400","500"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://erowan.com"),
@@ -32,9 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-white text-zinc-900">
+      <body className={`${display.variable} ${body.variable} ${mono.variable} antialiased bg-[var(--paper)] text-[var(--ink)]`}>
         <Header />
-        <main className="min-h-[60vh]">{children}</main>
+        <main id="main-content" className="min-h-[60vh]">{children}</main>
         <Footer />
         <Analytics />
       </body>

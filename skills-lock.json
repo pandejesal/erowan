@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "skills": {
+    "designing-beautiful-websites": {
+      "source": "tristanmanchester/agent-skills",
+      "sourceType": "github",
+      "skillPath": "designing-beautiful-websites/SKILL.md",
+      "computedHash": "8c5bd91e0a85c9dd07de4a2b42378020603ce878065ccb382b621004e1e15f62"
+    },
+    "efecto-web-design": {
+      "source": "pablostanley/efecto-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/web-design/SKILL.md",
+      "computedHash": "9d7416e16a5f8aa15807e05aa23a7e9f4a1bf6a8a8b1fdb2dc78775e5b5aee04"
+    },
+    "firecrawl-website-design-clone": {
+      "source": "firecrawl/firecrawl-workflows",
+      "sourceType": "github",
+      "skillPath": "skills/firecrawl-website-design-clone/SKILL.md",
+      "computedHash": "95d4eb061a4ef89d0213beefb359c7e06467dfff38fce6e4eacd61175b90b6cf"
+    },
+    "frontend-design": {
+      "source": "EdEngineering/opencode-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "61fa7d4b112cb239e4ee841b04a46379c8e460546c795653e6da46880b84b0ab"
+    },
+    "popular-web-designs": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/popular-web-designs/SKILL.md",
+      "computedHash": "7199c96d47f7067b15d7b29b57ecf4a799436684f6a9d076a76b2f86efc91fec"
+    },
+    "responsive-web-design": {
+      "source": "secondsky/claude-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/responsive-web-design/skills/responsive-web-design/SKILL.md",
+      "computedHash": "d8d425b2b536b568320174acdb7015f60e585fa8d4f061c3d4b120c80a357aff"
+    },
+    "threejs-webgl": {
+      "source": "freshtechbro/claudedesignskills",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/threejs-webgl/SKILL.md",
+      "computedHash": "b58ebf8170a5eca0e38b2eb6078665fe77c8c2f961dac573f9823016f5a6c7a4"
+    },
+    "web-artifacts-builder": {
+      "source": "nexu-io/open-design",
+      "sourceType": "github",
+      "skillPath": "skills/web-artifacts-builder/SKILL.md",
+      "computedHash": "5805c6c35438c87df93d609471c19b53ee2620c9dbc1128c0c0f7dda402ea222"
+    },
+    "web-component-design": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/ui-design/skills/web-component-design/SKILL.md",
+      "computedHash": "324d0ef35018b21b37e4d7b07336894824527e06b3a8bfa0496a0c5648c626c4"
+    },
+    "web-design": {
+      "source": "xiaopu-ai/web-design",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "397a641ef99f127cba278cd4d095cb43b8f781b9b29396e6876ba8145ed54558"
+    },
+    "web-design-engineer": {
+      "source": "conardli/garden-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-engineer/SKILL.md",
+      "computedHash": "419833614b24848c7c93bb2118e135a7e7b8267e53a25b0373eb4d1c49e71547"
+    },
+    "web-design-guidelines": {
+      "source": "asyrafhussin/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "3d34b066b23d6072a22f136520b93fe89937e6cd4aa85937786159c705f2ecbe"
+    },
+    "web-design-reviewer": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-reviewer/SKILL.md",
+      "computedHash": "4a05e32553a1dc916ee4f68f709d478c17de6b8ce184932f56f2b8646f3d4986"
+    },
+    "web-motion-design": {
+      "source": "dylantarre/animation-principles",
+      "sourceType": "github",
+      "skillPath": "skills/01-by-domain/web-motion-design/SKILL.md",
+      "computedHash": "b73096ae0ad4bf50ee888519a9a863e949e0203b61339f4c274b3f460618a7f2"
+    },
+    "web3d-integration-patterns": {
+      "source": "freshtechbro/claudedesignskills",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/web3d-integration-patterns/SKILL.md",
+      "computedHash": "031b411386de803fb3612bbcec35077ea6bfa414765c950c834ae226ad71acf8"
+    },
+    "webflow-cli:designer-extension": {
+      "source": "webflow/webflow-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/webflow-skills/skills/designer-extension-command/SKILL.md",
+      "computedHash": "87cc55fea8de23f62877ba59c175432ca005074c79894748f1f937ca3ca806b1"
+    },
+    "webflow-mcp:designer-tools": {
+      "source": "webflow/webflow-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/webflow-skills/skills/designer-tools/SKILL.md",
+      "computedHash": "431b435d80cef6f1805ee11b19ac00ad7d9b77d5b97224e9a0f4557acea17f38"
+    }
+  }
+}

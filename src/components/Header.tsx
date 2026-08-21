@@ -2,60 +2,36 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-zinc-200">
+    <header className="sticky top-0 z-50 bg-[var(--paper)] border-b-[1.5px] border-[var(--line)]">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 bg-[var(--ink)] text-white px-3 py-2 text-xs">Skip to content</a>
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-zinc-900 text-white grid place-items-center font-bold text-sm">
-            E
+        <Link href="/" className="flex items-center gap-3">
+          <div className="h-9 w-9 rounded-[6px] bg-[var(--ink)] text-white grid place-items-center font-black text-sm border border-[var(--line)]" style={{fontFamily:"var(--font-display)"}}>E</div>
+          <div>
+            <div className="font-black tracking-tight leading-none" style={{fontFamily:"var(--font-display)"}}>EROWAN</div>
+            <div className="text-[10px] tracking-[0.18em] text-[var(--muted)] font-mono" style={{fontFamily:"var(--font-mono)"}}>AHMEDABAD → WORLDWIDE • 48H</div>
           </div>
-          <span className="font-semibold tracking-tight">Erowan</span>
-          <span className="hidden sm:inline text-xs text-zinc-500 ml-1">
-            Worldwide • 48h
-          </span>
         </Link>
-        <nav className="hidden md:flex items-center gap-5 text-sm">
-          <Link href="/salons" className="hover:text-zinc-900 text-zinc-600">
-            Salons
-          </Link>
-          <Link href="/restaurants" className="hover:text-zinc-900 text-zinc-600">
-            Restaurants
-          </Link>
-          <Link href="/clinics" className="hover:text-zinc-900 text-zinc-600">
-            Clinics
-          </Link>
-          <Link href="/real-estate" className="hover:text-zinc-900 text-zinc-600">
-            Real Estate
-          </Link>
-          <Link href="/crm" className="hover:text-zinc-900 text-zinc-900 font-medium border-l border-zinc-200 pl-5">
-            CRM
-          </Link>
-          <Link href="/pay" className="px-3 py-1.5 rounded-full bg-zinc-900 text-white text-sm">Pay / Book</Link>
+        <nav aria-label="Main" className="hidden md:flex items-center gap-1 text-xs font-mono" style={{fontFamily:"var(--font-mono)"}}>
+          <Link href="/salons" className="px-3 py-1.5 border border-transparent hover:border-[var(--line)] hover:bg-white">SALONS</Link>
+          <Link href="/restaurants" className="px-3 py-1.5 border border-transparent hover:border-[var(--line)] hover:bg-white">RESTAURANTS</Link>
+          <Link href="/clinics" className="px-3 py-1.5 border border-transparent hover:border-[var(--line)] hover:bg-white">CLINICS</Link>
+          <Link href="/real-estate" className="px-3 py-1.5 border border-transparent hover:border-[var(--line)] hover:bg-white">REAL ESTATE</Link>
+          <Link href="/crm" className="px-3 py-1.5 bg-white border border-[var(--line)]">CRM</Link>
+          <Link href="/pay" className="ml-1 px-4 py-1.5 bg-[var(--accent)] text-white border border-[var(--line)] font-bold hover:translate-y-[-1px] hover:shadow-[3px_3px_0_var(--line)] transition">PAY / BOOK →</Link>
         </nav>
-        <div className="flex items-center gap-2">
-          <a
-            href="https://wa.me/919999999999"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex text-sm px-3 py-1.5 rounded-full border border-zinc-300 hover:bg-zinc-50"
-          >
-            WhatsApp
-          </a>
-          <a
-            href="#contact"
-            className="text-sm px-4 py-1.5 rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
-          >
-            Book call
-          </a>
+        <div className="flex md:hidden items-center gap-2">
+          <Link href="/pay" className="px-3 py-1.5 bg-[var(--accent)] text-white border border-[var(--line)] text-xs font-bold">PAY</Link>
         </div>
       </div>
-      <div className="md:hidden border-t border-zinc-100">
-        <div className="mx-auto max-w-6xl px-4 py-2 flex gap-4 text-xs overflow-x-auto">
-          <Link href="/salons" className="whitespace-nowrap text-zinc-600">Salons</Link>
-          <Link href="/restaurants" className="whitespace-nowrap text-zinc-600">Restaurants</Link>
-          <Link href="/clinics" className="whitespace-nowrap text-zinc-600">Clinics</Link>
-          <Link href="/real-estate" className="whitespace-nowrap text-zinc-600">Real Estate</Link>
-          <Link href="/crm" className="whitespace-nowrap text-zinc-900 font-medium">CRM</Link>
-        </div>
+      <div className="md:hidden border-t border-[var(--line)] bg-[var(--paper-2)]">
+        <nav aria-label="Mobile" className="mx-auto max-w-6xl px-4 py-2 flex gap-1 text-[11px] font-mono overflow-x-auto" style={{fontFamily:"var(--font-mono)"}}>
+          <Link href="/salons" className="whitespace-nowrap px-2 py-1 border border-[var(--line)] bg-white">SALONS</Link>
+          <Link href="/restaurants" className="whitespace-nowrap px-2 py-1 border border-[var(--line)] bg-white">RESTAURANTS</Link>
+          <Link href="/clinics" className="whitespace-nowrap px-2 py-1 border border-[var(--line)] bg-white">CLINICS</Link>
+          <Link href="/real-estate" className="whitespace-nowrap px-2 py-1 border border-[var(--line)] bg-white">REAL ESTATE</Link>
+          <Link href="/crm" className="whitespace-nowrap px-2 py-1 bg-[var(--ink)] text-white">CRM</Link>
+        </nav>
       </div>
     </header>
   );
