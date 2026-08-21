@@ -36,7 +36,7 @@ export default function Home() {
             </div>
             <div className="mt-6 grid grid-cols-3 gap-2 text-xs text-zinc-600">
               <div className="rounded-lg border border-zinc-200 px-3 py-2 bg-zinc-50">Worldwide clients</div>
-              <div className="rounded-lg border border-zinc-200 px-3 py-2 bg-zinc-50">English + Arabic</div>
+              <div className="rounded-lg border border-zinc-200 px-3 py-2 bg-zinc-50">English worldwide</div>
               <div className="rounded-lg border border-zinc-200 px-3 py-2 bg-zinc-50">Wise / PayPal</div>
             </div>
           </div>

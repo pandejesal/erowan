@@ -19,17 +19,17 @@ export const niches: Niche[] = [
     tagline: "Turn after-hours scrolls into booked chairs",
     pain: "60% of bookings happen after 8pm — no online booking = empty chairs",
     description:
-      "For salons & spas worldwide — from Dubai to Miami — that lose bookings to WhatsApp chaos. We ship booking-first sites in 48 hours.",
+      "For salons & spas worldwide — from Dubai to New York — that lose bookings to WhatsApp chaos. We ship booking-first sites in 48 hours.",
     features: [
       "One-tap WhatsApp + online booking (Fresha/Squire compatible)",
-      "Services & price list with USD/AED/EUR toggle",
+      "Services & price list with multi-currency toggle",
       "Instagram feed + Google reviews auto-sync",
       "Staff pages + slot availability",
     ],
     faq: [
-      { q: "Do you handle Arabic/Spanish?", a: "Yes — English + Arabic/Spanish layout included, RTL ready." },
       { q: "Can clients pay online?", a: "Optional deposit via Stripe/PayPal link — or pay-at-store." },
       { q: "How fast?", a: "48 hours for base, +24h for booking integration." },
+      { q: "Do you handle SEO?", a: "Yes — meta + Google Business ready." },
     ],
     demos: [
       { id: "salon-1", name: "Noura Salon — Dubai", href: "/demos/salon-1", image: "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=800&q=80&auto=format&fit=crop" },
@@ -69,16 +69,16 @@ export const niches: Niche[] = [
     tagline: "Trust before they book the appointment",
     pain: "Patients vet you in 10 seconds — no doctor profiles = no trust",
     description:
-      "Clinics worldwide that need compliant, calm, conversion-focused sites — DHA, HIPAA or GDPR aware.",
+      "Clinics worldwide that need compliant, calm, conversion-focused sites.",
     features: [
       "Doctor profiles + credentials + license badge",
       "Appointment request with triage (not false promise)",
       "Before/after consent-aware gallery",
-      "Insurance & location + multi-language toggle",
+      "Insurance & location + contact form",
     ],
     faq: [
       { q: "Is it HIPAA/PDPL/GDPR safe?", a: "No patient data stored — forms go to your email/WhatsApp." },
-      { q: "Languages?", a: "Yes, bilingual header included." },
+      { q: "Languages?", a: "English default, multi-language on request." },
       { q: "Booking integration?", a: "Connects to your existing HIS/Calendly — we don't replace it." },
     ],
     demos: [
@@ -104,7 +104,7 @@ export const niches: Niche[] = [
     faq: [
       { q: "CRM?", a: "Leads to WhatsApp/Email/HubSpot free — your choice." },
       { q: "Listings sync?", a: "Manual for base; CSV import add-on." },
-      { q: "Languages?", a: "Yes, included." },
+      { q: "Languages?", a: "English default." },
     ],
     demos: [
       { id: "realestate-1", name: "Vista Homes — Dubai Hills", href: "/demos/realestate-1", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop" },

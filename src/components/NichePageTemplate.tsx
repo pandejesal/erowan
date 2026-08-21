@@ -49,7 +49,7 @@ export default function NichePageTemplate({ niche }: { niche: Niche }) {
             <div className="rounded-xl bg-zinc-900 text-white p-4">
               <div className="text-xs text-zinc-400">BASE</div>
               <div className="text-xl font-bold">$250 <span className="text-sm font-normal text-zinc-400">~920 AED</span></div>
-              <div className="text-zinc-300 mt-1">5 pages, Arabic toggle, 48h</div>
+              <div className="text-zinc-300 mt-1">5 pages, English worldwide, 48h</div>
             </div>
             <div className="rounded-xl border border-zinc-200 p-4">
               <div className="text-xs text-zinc-500">NICHE ADD-ON</div>
