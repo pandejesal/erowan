@@ -16,6 +16,7 @@ export default function Footer() {
             <li><a href="/restaurants" className="hover:text-white hover:underline">/restaurants — Cafes →</a></li>
             <li><a href="/clinics" className="hover:text-white hover:underline">/clinics — Clinics →</a></li>
             <li><a href="/real-estate" className="hover:text-white hover:underline">/real-estate — Real Estate →</a></li>
+            <li><a href="/other" className="hover:text-white hover:underline">/other — Other Businesses →</a></li>
           </ul>
         </div>
         <div>

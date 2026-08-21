@@ -112,6 +112,31 @@ export const niches: Niche[] = [
     ],
     priceNote: "$250 base + $150 listings",
   },
+  {
+    slug: "other",
+    title: "Websites for Other Businesses",
+    shortTitle: "Other Businesses",
+    tagline: "Any business. One clear site that converts.",
+    pain: "If clients Google you and find nothing clear — you lose them",
+    description:
+      "For any business worldwide — agencies, consultants, shops, studios, trades — that needs a clean, fast site that turns visitors into leads. Fully custom.",
+    features: [
+      "Custom hero + services + proof tailored to your business",
+      "Contact form + WhatsApp + Google Maps",
+      "Testimonials + gallery + trust badges",
+      "SEO basics + fast 48h delivery",
+    ],
+    faq: [
+      { q: "We’re not salon/restaurant/clinic/real estate — can you still do it?", a: "Yes — Other is catch-all. We tailor everything to your business." },
+      { q: "What do you need from us?", a: "Logo (or we make one), services, photos, contact — we handle rest." },
+      { q: "Languages?", a: "English default, add more on request." },
+    ],
+    demos: [
+      { id: "other-1", name: "North Consulting — London", href: "/demos/other-1", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop" },
+      { id: "other-2", name: "Craft Shop — Brooklyn", href: "/demos/other-2", image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&q=80&auto=format&fit=crop" },
+    ],
+    priceNote: "$250 base + custom add-ons",
+  },
 ];
 
 export const getNiche = (slug: string) => niches.find((n) => n.slug === slug);

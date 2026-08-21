@@ -17,6 +17,7 @@ export default function Header() {
           <Link href="/restaurants" className="px-3 py-1.5 border border-transparent hover:border-[var(--line)] hover:bg-white">RESTAURANTS</Link>
           <Link href="/clinics" className="px-3 py-1.5 border border-transparent hover:border-[var(--line)] hover:bg-white">CLINICS</Link>
           <Link href="/real-estate" className="px-3 py-1.5 border border-transparent hover:border-[var(--line)] hover:bg-white">REAL ESTATE</Link>
+          <Link href="/other" className="px-3 py-1.5 border border-transparent hover:border-[var(--line)] hover:bg-white">OTHER</Link>
           <Link href="/pay" className="ml-1 px-4 py-1.5 bg-[var(--accent)] text-white border border-[var(--line)] font-bold hover:translate-y-[-1px] hover:shadow-[3px_3px_0_var(--line)] transition">PAY / BOOK →</Link>
         </nav>
         <div className="flex md:hidden items-center gap-2">
@@ -29,6 +30,7 @@ export default function Header() {
           <Link href="/restaurants" className="whitespace-nowrap px-2 py-1 border border-[var(--line)] bg-white">RESTAURANTS</Link>
           <Link href="/clinics" className="whitespace-nowrap px-2 py-1 border border-[var(--line)] bg-white">CLINICS</Link>
           <Link href="/real-estate" className="whitespace-nowrap px-2 py-1 border border-[var(--line)] bg-white">REAL ESTATE</Link>
+          <Link href="/other" className="whitespace-nowrap px-2 py-1 border border-[var(--line)] bg-white">OTHER</Link>
         </nav>
       </div>
     </header>
