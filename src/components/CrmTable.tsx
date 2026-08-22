@@ -20,7 +20,30 @@ export type Lead = {
 };
 
 const STORAGE_KEY = "erowan_crm_v1";
-const NICHES = ["salons", "restaurants", "clinics", "real-estate"];
+const NICHES = ["salons", "restaurants", "clinics", "real-estate", "other"];
+
+const DEFAULT_LEADS: Lead[] = [
+  { id: "other-01", business: "Bright Consulting Dubai", niche: "other", city: "Dubai", contact: "info@brightconsulting.ae", source: "Apollo Free", url: "https://brightconsulting.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1 • QA 30s" },
+  { id: "other-02", business: "Al Noor Trading Sharjah", niche: "other", city: "Sharjah", contact: "hello@alnoortrading.ae", source: "Maps", url: "https://alnoortrading.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-2 • QA 30s" },
+  { id: "other-03", business: "Gulf Digital Agency", niche: "other", city: "Dubai", contact: "contact@gulfdigital.ae", source: "Apollo Free", url: "https://gulfdigital.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-04", business: "Horizon Consulting Abu Dhabi", niche: "other", city: "Abu Dhabi", contact: "info@horizonad.ae", source: "Apollo Free", url: "https://horizonad.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-05", business: "Craft & Co Dubai", niche: "other", city: "Dubai", contact: "hello@craftandco.ae", source: "Instagram", url: "https://craftandco.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-2" },
+  { id: "other-06", business: "Palm Consulting Doha", niche: "other", city: "Doha", contact: "info@palmconsulting.qa", source: "Apollo Free", url: "https://palmconsulting.qa", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-07", business: "Riyadh Business Hub", niche: "other", city: "Riyadh", contact: "contact@riyadhhub.sa", source: "Apollo Free", url: "https://riyadhhub.sa", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-08", business: "Emirates Branding Studio", niche: "other", city: "Dubai", contact: "hello@emiratesbranding.ae", source: "Instagram", url: "https://emiratesbranding.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-2" },
+  { id: "other-09", business: "Sharjah Trade Solutions", niche: "other", city: "Sharjah", contact: "info@sharjahtrade.ae", source: "Maps", url: "https://sharjahtrade.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-10", business: "Doha Creative Agency", niche: "other", city: "Doha", contact: "hello@dohacreative.qa", source: "Apollo Free", url: "https://dohacreative.qa", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-2" },
+  { id: "other-11", business: "Jeddah Consulting Group", niche: "other", city: "Jeddah", contact: "info@jeddahconsult.sa", source: "Apollo Free", url: "https://jeddahconsult.sa", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-12", business: "Muscat Business Services", niche: "other", city: "Muscat", contact: "contact@muscatbiz.om", source: "Maps", url: "https://muscatbiz.om", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-13", business: "Dubai Tech Traders", niche: "other", city: "Dubai", contact: "info@dubaitech.ae", source: "Apollo Free", url: "https://dubaitech.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-2" },
+  { id: "other-14", business: "Abu Dhabi Consulting Co", niche: "other", city: "Abu Dhabi", contact: "hello@adconsulting.ae", source: "Apollo Free", url: "https://adconsulting.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-15", business: "Gulf Crafts Market", niche: "other", city: "Sharjah", contact: "info@gulfcrafts.ae", source: "Instagram", url: "https://gulfcrafts.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-2" },
+  { id: "other-16", business: "Riyadh Digital Solutions", niche: "other", city: "Riyadh", contact: "contact@riyadhdigital.sa", source: "Apollo Free", url: "https://riyadhdigital.sa", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-17", business: "Doha Business Center", niche: "other", city: "Doha", contact: "info@dohabusiness.qa", source: "Maps", url: "https://dohabusiness.qa", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-2" },
+  { id: "other-18", business: "Emirates Consulting Hub", niche: "other", city: "Dubai", contact: "hello@emirateshub.ae", source: "Apollo Free", url: "https://emirateshub.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+  { id: "other-19", business: "Sharjah Creative Studio", niche: "other", city: "Sharjah", contact: "hello@sharjahcreative.ae", source: "Instagram", url: "https://sharjahcreative.ae", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-2" },
+  { id: "other-20", business: "Jeddah Trade & Consulting", niche: "other", city: "Jeddah", contact: "info@jeddahtrade.sa", source: "Apollo Free", url: "https://jeddahtrade.sa", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
+];
 
 export default function CrmTable() {
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -28,7 +51,15 @@ export default function CrmTable() {
 
   useEffect(() => {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) try { setLeads(JSON.parse(raw)); } catch {}
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) setLeads(parsed);
+        else setLeads(DEFAULT_LEADS);
+      } catch { setLeads(DEFAULT_LEADS); }
+    } else {
+      setLeads(DEFAULT_LEADS);
+    }
   }, []);
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
