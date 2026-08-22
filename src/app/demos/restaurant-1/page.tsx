@@ -16,6 +16,13 @@ export default function Page() {
         </div>
         <Image src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80&auto=format&fit=crop" alt="Mira Cafe" width={800} height={600} className="rounded-2xl h-[420px] w-full object-cover border" />
       </section>
+      <section className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-3 gap-3">
+          <div className="rounded-xl bg-zinc-900 text-white p-4 text-center"><div className="text-xl font-bold">4.7 ★</div><div className="text-xs text-zinc-400">312 reviews</div></div>
+          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">1.2k</div><div className="text-xs text-zinc-500">Orders/mo</div></div>
+          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">15 min</div><div className="text-xs text-zinc-500">Avg. prep</div></div>
+        </div>
+      </section>
       <section id="menu" className="mx-auto max-w-7xl px-6 py-8">
         <h2 className="text-2xl font-serif font-bold">Menu — Tap to order</h2>
         <div className="mt-6 grid md:grid-cols-3 gap-4">
@@ -27,7 +34,7 @@ export default function Page() {
             { name: "Açaí Bowl", price: "AED 45", desc: "Granola, banana, honey" },
             { name: "Brunch for 2", price: "AED 149", desc: "Share, 10am–2pm" },
           ].map(s=>(
-            <div key={s.name} className="bg-white border rounded-2xl p-5 flex justify-between">
+            <div key={s.name} className="bg-white border rounded-2xl p-5 flex justify-between hover:shadow-sm">
               <div><div className="font-bold">{s.name}</div><div className="text-sm text-zinc-600">{s.desc}</div></div>
               <div className="bg-zinc-900 text-white px-2 py-1 rounded-full text-sm font-bold h-fit">{s.price}</div>
             </div>
@@ -39,7 +46,17 @@ export default function Page() {
         <Image src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format&fit=crop" alt="g2" width={400} height={300} className="rounded-xl h-32 w-full object-cover border" />
         <Image src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=600&q=80&auto=format&fit=crop" alt="g3" width={400} height={300} className="rounded-xl h-32 w-full object-cover border" />
       </section>
-      <section className="mx-auto max-w-7xl px-6 py-8 bg-zinc-900 text-white rounded-2xl flex justify-between items-center"><div><div className="font-bold">Reserve a table — JLT</div><div className="text-sm text-zinc-400">WhatsApp in 20 seconds</div></div><a href="https://wa.me/919999999999" className="px-6 py-3 bg-white text-zinc-900 rounded-full font-bold">Reserve →</a></section>
+      <section className="mx-auto max-w-7xl px-6 py-6">
+        <h3 className="font-serif font-bold">Loved in JLT</h3>
+        <div className="mt-3 grid md:grid-cols-3 gap-4">
+          {[
+            "Best avocado toast in JLT — ordered on WhatsApp in 20 seconds.",
+            "No more Talabat fees. Mira’s site is our top channel now.",
+            "Brunch for 2 is our weekend ritual. Booking is flawless.",
+          ].map((t,i)=><div key={i} className="bg-white border rounded-2xl p-5 text-sm">“{t}”<div className="mt-2 text-xs font-bold">— Guest ★★★★★</div></div>)}
+        </div>
+      </section>
+      <section className="mx-auto max-w-7xl px-6 py-8 bg-zinc-900 text-white rounded-2xl flex justify-between items-center"><div><div className="font-bold">Reserve a table — JLT</div><div className="text-sm text-zinc-400">WhatsApp in 20 seconds • Open 8am–11pm</div></div><a href="https://wa.me/919999999999" className="px-6 py-3 bg-white text-zinc-900 rounded-full font-bold">Reserve →</a></section>
       <div className="mx-auto max-w-7xl px-6 py-6 text-xs text-zinc-500 text-center">Concept demo by Erowan — your cafe in 48h.</div>
     </div>
   );

@@ -16,6 +16,13 @@ export default function Page() {
         </div>
         <Image src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1000&q=80&auto=format&fit=crop" alt="Al Noor" width={800} height={600} className="rounded-2xl h-[420px] w-full object-cover border" />
       </section>
+      <section className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-3 gap-3">
+          <div className="rounded-xl bg-zinc-900 text-white p-4 text-center"><div className="text-xl font-bold">4.8 ★</div><div className="text-xs text-zinc-400">180 reviews</div></div>
+          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">6k+</div><div className="text-xs text-zinc-500">Patients</div></div>
+          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">10 yrs</div><div className="text-xs text-zinc-500">Mitte</div></div>
+        </div>
+      </section>
       <section id="services" className="mx-auto max-w-7xl px-6 py-8">
         <h2 className="text-2xl font-serif font-bold">Services</h2>
         <div className="mt-4 grid md:grid-cols-3 gap-4">
@@ -29,6 +36,16 @@ export default function Page() {
           ].map(s=>(
             <div key={s.name} className="bg-white border rounded-2xl p-5 flex justify-between"><div className="font-bold">{s.name}</div><div className="bg-zinc-900 text-white px-2 py-1 rounded-full text-sm font-bold">{s.price}</div></div>
           ))}
+        </div>
+      </section>
+      <section className="mx-auto max-w-7xl px-6 py-6">
+        <h3 className="font-serif font-bold">Patient stories</h3>
+        <div className="mt-3 grid md:grid-cols-3 gap-4">
+          {[
+            "Dr. was thorough, no rush. Berlin care, calm.",
+            "Lab results same day via WhatsApp. Easy.",
+            "Family doctor for 3 years — trust.",
+          ].map((t,i)=><div key={i} className="bg-white border rounded-2xl p-5 text-sm">“{t}”<div className="mt-2 text-xs font-bold">— Patient ★★★★★</div></div>)}
         </div>
       </section>
       <div className="mx-auto max-w-7xl px-6 py-6 text-xs text-zinc-500 text-center">Concept demo by Erowan — your clinic in 48h.</div>

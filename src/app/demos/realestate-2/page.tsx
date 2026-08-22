@@ -16,6 +16,13 @@ export default function Page() {
         </div>
         <Image src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=80&auto=format&fit=crop" alt="Harbor" width={800} height={600} className="rounded-2xl h-[420px] w-full object-cover border" />
       </section>
+      <section className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-3 gap-3">
+          <div className="rounded-xl bg-zinc-900 text-white p-4 text-center"><div className="text-xl font-bold">4.9 ★</div><div className="text-xs text-zinc-400">95 reviews</div></div>
+          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">200+</div><div className="text-xs text-zinc-500">Deals closed</div></div>
+          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">MLS</div><div className="text-xs text-zinc-500">Licensed</div></div>
+        </div>
+      </section>
       <section id="listings" className="mx-auto max-w-7xl px-6 py-8">
         <h2 className="text-2xl font-serif font-bold">Listings</h2>
         <div className="mt-4 grid md:grid-cols-3 gap-4">
@@ -24,11 +31,21 @@ export default function Page() {
             { name: "3BR — Miami Beach", price: "$780K", img: "https://images.unsplash.com/photo-1600607687644-c71734b42498?w=600&q=80&auto=format&fit=crop" },
             { name: "Villa — Coral Gables", price: "$1.2M", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80&auto=format&fit=crop" },
           ].map(l=>(
-            <div key={l.name} className="bg-white border rounded-2xl overflow-hidden">
+            <div key={l.name} className="bg-white border rounded-2xl overflow-hidden hover:shadow-sm">
               <Image src={l.img} alt={l.name} width={400} height={250} className="h-36 w-full object-cover border-b" />
               <div className="p-4"><div className="font-bold">{l.name}</div><div className="text-sm bg-zinc-900 text-white inline-block px-2 py-1 rounded-full mt-1">{l.price}</div></div>
             </div>
           ))}
+        </div>
+      </section>
+      <section className="mx-auto max-w-7xl px-6 py-6">
+        <h3 className="font-serif font-bold">Buyer stories</h3>
+        <div className="mt-3 grid md:grid-cols-3 gap-4">
+          {[
+            "Found our Brickell 2BR via Harbor, closed in 30 days.",
+            "WhatsApp brochure was instant, agent was bilingual.",
+            "Sold Miami Beach home above asking via site leads.",
+          ].map((t,i)=><div key={i} className="bg-white border rounded-2xl p-5 text-sm">“{t}”<div className="mt-2 text-xs font-bold">— Buyer ★★★★★</div></div>)}
         </div>
       </section>
       <div className="mx-auto max-w-7xl px-6 py-6 text-xs text-zinc-500 text-center">Concept demo by Erowan — your brokerage in 48h.</div>

@@ -16,6 +16,13 @@ export default function Page() {
         </div>
         <Image src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1000&q=80&auto=format&fit=crop" alt="Bloom Spa" width={800} height={600} className="rounded-2xl h-[420px] w-full object-cover border" />
       </section>
+      <section className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-3 gap-3">
+          <div className="rounded-xl bg-zinc-900 text-white p-4 text-center"><div className="text-xl font-bold">4.8 ★</div><div className="text-xs text-zinc-400">210 reviews</div></div>
+          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">3k+</div><div className="text-xs text-zinc-500">Monthly clients</div></div>
+          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">2019</div><div className="text-xs text-zinc-500">SoHo since</div></div>
+        </div>
+      </section>
       <section id="services" className="mx-auto max-w-7xl px-6 py-8">
         <h2 className="text-2xl font-serif font-bold">Services & Prices</h2>
         <div className="mt-6 grid md:grid-cols-3 gap-4">
