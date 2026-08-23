@@ -19,7 +19,17 @@ export type Lead = {
   notes?: string;
 };
 
+type Check = {
+  leadId: string;
+  url: string;
+  pains: string[];
+  checklist: { label: string; pass: boolean; detail: string }[];
+  at: string;
+  error?: string;
+};
+
 const STORAGE_KEY = "erowan_crm_v1";
+const CHECKS_KEY = "erowan_crm_checks_v1";
 const NICHES = ["salons", "restaurants", "clinics", "real-estate", "other"];
 
 const DEFAULT_LEADS: Lead[] = [
@@ -47,9 +57,21 @@ const DEFAULT_LEADS: Lead[] = [
   { id: "other-20", business: "Jeddah Trade & Consulting", niche: "other", city: "Jeddah", contact: "info@jeddahtrade.sa", source: "Apollo Free", url: "https://jeddahtrade.sa", sentDate: new Date().toISOString().slice(0,10), status: "Not Sent", reply: false, notes: "Demo: /demos/other-1" },
 ];
 
+function isScrapable(url?: string) {
+  if (!url) return false;
+  const t = url.trim();
+  if (t.includes("google.com/maps/search")) return false;
+  if (/^https?:\/\//i.test(t)) return true;
+  if (t.includes(".") && !t.includes(" ")) return true;
+  return false;
+}
+
 export default function CrmTable() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [form, setForm] = useState<Partial<Lead>>({ niche: "salons", city: "Dubai", status: "Not Sent" });
+  const [checks, setChecks] = useState<Record<string, Check>>({});
+  const [checking, setChecking] = useState(false);
+  const [progress, setProgress] = useState<{ done: number; total: number; current: string }>({ done: 0, total: 0, current: "" });
 
   useEffect(() => {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -62,10 +84,17 @@ export default function CrmTable() {
     } else {
       setLeads(DEFAULT_LEADS);
     }
+    const rawChecks = localStorage.getItem(CHECKS_KEY);
+    if (rawChecks) {
+      try { setChecks(JSON.parse(rawChecks)); } catch {}
+    }
   }, []);
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
   }, [leads]);
+  useEffect(() => {
+    localStorage.setItem(CHECKS_KEY, JSON.stringify(checks));
+  }, [checks]);
 
   const addLead = () => {
     if (!form.business || !form.contact) return alert("Business + Contact required");
@@ -100,11 +129,58 @@ export default function CrmTable() {
   const update = (id: string, patch: Partial<Lead>) => setLeads(leads.map(l => l.id === id ? { ...l, ...patch } : l));
   const remove = (id: string) => setLeads(leads.filter(l => l.id !== id));
   const exportCsv = () => {
-    const header = "Business,Niche,City,Contact,Source,URL,SentDate,F1,F2,F3,Status,Reply,Notes";
-    const rows = leads.map(l => [l.business,l.niche,l.city,l.contact,l.source,l.url||"",l.sentDate,l.follow1||"",l.follow2||"",l.follow3||"",l.status,l.reply?"Yes":"No",`"${(l.notes||"").replace(/"/g,'""')}"`].join(","));
+    const header = "Business,Niche,City,Contact,Source,URL,SentDate,F1,F2,F3,Status,Reply,Pains,Notes";
+    const rows = leads.map(l => {
+      const ck = checks[l.id];
+      const pains = ck ? ck.pains.join(" | ") : "";
+      const esc = (v: string) => `"${v.replace(/"/g,'""')}"`;
+      return [l.business,l.niche,l.city,l.contact,l.source,l.url||"",l.sentDate,l.follow1||"",l.follow2||"",l.follow3||"",l.status,l.reply?"Yes":"No",esc(pains),esc(l.notes||"")].join(",");
+    });
     const blob = new Blob([header+"\n"+rows.join("\n")], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a"); a.href = url; a.download = "erowan-crm.csv"; a.click();
+  };
+
+  const scrapable = leads.filter(l => isScrapable(l.url));
+  const mapsOnly = leads.filter(l => l.url?.includes("google.com/maps/search")).length;
+
+  const checkOne = async (lead: Lead): Promise<Check> => {
+    try {
+      const res = await fetch("/api/scrape", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url: lead.url }) });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || "scrape failed");
+      return { leadId: lead.id, url: lead.url || "", pains: json.pains || [], checklist: json.checklist || [], at: new Date().toISOString() };
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : "failed";
+      return { leadId: lead.id, url: lead.url || "", pains: [], checklist: [], at: new Date().toISOString(), error: msg };
+    }
+  };
+
+  const autoCheckAll = async () => {
+    if (scrapable.length === 0) return alert("No scrapable URLs — Maps links are N/A (no website). Add real https:// URLs to auto-check.");
+    if (!confirm(`Auto-check ${scrapable.length} URLs sequentially? (~${Math.ceil(scrapable.length*1.2)}s, 700ms throttle + 8s timeout each). Continue?`)) return;
+    setChecking(true);
+    setProgress({ done: 0, total: scrapable.length, current: "" });
+    for (let i = 0; i < scrapable.length; i++) {
+      const lead = scrapable[i];
+      setProgress({ done: i, total: scrapable.length, current: lead.business });
+      const ck = await checkOne(lead);
+      setChecks(prev => ({ ...prev, [lead.id]: ck }));
+      setProgress({ done: i + 1, total: scrapable.length, current: lead.business });
+      if (i < scrapable.length - 1) await new Promise(r => setTimeout(r, 700));
+    }
+    setChecking(false);
+    setProgress({ done: scrapable.length, total: scrapable.length, current: "" });
+  };
+
+  const checkSingle = async (lead: Lead) => {
+    if (!isScrapable(lead.url)) return alert("Not scrapable — Maps link = no website (manual verification).");
+    const ck = await checkOne(lead);
+    setChecks(prev => ({ ...prev, [lead.id]: ck }));
+  };
+
+  const clearChecks = () => {
+    if (confirm("Clear all auto-check results?")) setChecks({});
   };
 
   return (
@@ -124,6 +200,37 @@ export default function CrmTable() {
       </div>
 
       <div className="rounded-2xl border border-zinc-200 p-4 bg-white">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <div className="font-medium text-sm">Bulk research — auto-check everything</div>
+            <p className="text-xs text-zinc-600">Sequentially scrapes every scrapable https:// URL, flags booking/mobile/CTA pains. Maps links (no website) are auto-skipped — verify phone on Maps.</p>
+          </div>
+          <div className="flex gap-2 shrink-0">
+            <button onClick={autoCheckAll} disabled={checking} className="px-4 py-2 rounded-full bg-zinc-900 text-white text-sm disabled:opacity-50">
+              {checking ? `Checking ${progress.done}/${progress.total}…` : `Check All (${scrapable.length} URLs)`}
+            </button>
+            {Object.keys(checks).length > 0 && <button onClick={clearChecks} disabled={checking} className="px-3 py-2 rounded-full border border-zinc-300 text-xs">Clear checks</button>}
+          </div>
+        </div>
+        {(checking || Object.keys(checks).length > 0) && (
+          <div className="mt-3 space-y-2">
+            {checking && (
+              <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-2">
+                <div className="h-2 rounded-full bg-zinc-200 overflow-hidden">
+                  <div className="h-full bg-zinc-900 transition-all" style={{ width: `${progress.total ? Math.round((progress.done/progress.total)*100) : 0}%` }} />
+                </div>
+                <div className="text-xs text-zinc-600 mt-1">{progress.done}/{progress.total} — {progress.current || "done"}</div>
+              </div>
+            )}
+            <div className="text-xs text-zinc-600">
+              Scrapable: {scrapable.length} • Maps (no-site, skipped): {mapsOnly} • Checked: {Object.keys(checks).length} • Errors: {Object.values(checks).filter(c=>c.error).length}
+              {mapsOnly > 0 && <span className="ml-2 text-amber-700">Maps leads = no website → hottest pain, no scrape needed.</span>}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="rounded-2xl border border-zinc-200 p-4 bg-white">
         <div className="font-medium text-sm">Add lead</div>
         <div className="mt-3 grid md:grid-cols-3 gap-2">
           <input placeholder="Business *" value={form.business||""} onChange={e=>setForm({...form,business:e.target.value})} className="border rounded-lg px-3 py-2 text-sm" />
@@ -138,7 +245,7 @@ export default function CrmTable() {
         </div>
         <div className="mt-3 flex gap-2">
           <button onClick={addLead} className="px-4 py-2 rounded-full bg-zinc-900 text-white text-sm">Add to CRM</button>
-          <button onClick={exportCsv} className="px-4 py-2 rounded-full border border-zinc-300 text-sm">Export CSV</button>
+          <button onClick={exportCsv} className="px-4 py-2 rounded-full border border-zinc-300 text-sm">Export CSV (with pains)</button>
           <button onClick={()=>{ if(confirm("Clear all leads?")) setLeads([])}} className="text-xs text-zinc-500 underline">Clear</button>
         </div>
       </div>
@@ -158,14 +265,31 @@ export default function CrmTable() {
                 <th className="text-left p-2">F3</th>
                 <th className="text-left p-2">Status</th>
                 <th className="text-left p-2">Reply</th>
+                <th className="text-left p-2">Research</th>
                 <th className="text-left p-2"></th>
               </tr>
             </thead>
             <tbody>
-              {leads.length===0 && <tr><td colSpan={11} className="p-6 text-center text-zinc-500">No leads yet — add 20-30/day max.</td></tr>}
-              {leads.map(l=> (
+              {leads.length===0 && <tr><td colSpan={12} className="p-6 text-center text-zinc-500">No leads yet — add 20-30/day max.</td></tr>}
+              {leads.map(l=> {
+                const ck = checks[l.id];
+                const scrapableFlag = isScrapable(l.url);
+                return (
                 <tr key={l.id} className="border-t border-zinc-100">
-                  <td className="p-2"><div className="font-medium">{l.business}</div><div className="text-xs text-zinc-500 truncate max-w-[160px]">{l.url||""}</div></td>
+                  <td className="p-2">
+                    <div className="font-medium">{l.business}</div>
+                    <div className="text-xs text-zinc-500 truncate max-w-[160px]">{l.url||""}</div>
+                    {ck && !ck.error && ck.pains.length > 0 && (
+                      <div className="mt-1 flex flex-wrap gap-1">
+                        {ck.pains.slice(0,2).map(p=> <span key={p} className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-800">{p.slice(0,28)}</span>)}
+                        {ck.pains.length > 2 && <span className="text-[10px] text-zinc-500">+{ck.pains.length-2}</span>}
+                      </div>
+                    )}
+                    {ck && !ck.error && ck.pains.length===0 && <div className="mt-1 text-[10px] text-emerald-700">✓ No obvious pains — use Loom</div>}
+                    {ck?.error && <div className="mt-1 text-[10px] text-red-600 truncate max-w-[160px]">{ck.error}</div>}
+                    {!ck && scrapableFlag && <div className="mt-1 text-[10px] text-zinc-400">Not checked</div>}
+                    {!scrapableFlag && l.url?.includes("google.com/maps") && <div className="mt-1 text-[10px] text-amber-700">Maps • No site (skip scrape)</div>}
+                  </td>
                   <td className="p-2 text-xs">{l.niche}</td>
                   <td className="p-2 text-xs">{l.city}</td>
                   <td className="p-2 text-xs break-all max-w-[150px]">{l.contact}</td>
@@ -179,9 +303,23 @@ export default function CrmTable() {
                     </select>
                   </td>
                   <td className="p-2 text-center"><input type="checkbox" checked={l.reply} onChange={e=>update(l.id,{ reply: e.target.checked })} /></td>
+                  <td className="p-2">
+                    {scrapableFlag ? (
+                      <button onClick={()=>checkSingle(l)} className="text-xs px-2 py-1 rounded-full border border-zinc-300 hover:bg-zinc-50 whitespace-nowrap">
+                        {ck ? "Re-check" : "Check"}
+                      </button>
+                    ) : (
+                      <span className="text-xs text-zinc-400">N/A</span>
+                    )}
+                    {ck && (
+                      <div className="text-[10px] text-zinc-500 mt-1">
+                        {new Date(ck.at).toLocaleDateString()} {ck.pains.length} pains
+                      </div>
+                    )}
+                  </td>
                   <td className="p-2"><button onClick={()=>remove(l.id)} className="text-xs text-red-600">Del</button></td>
                 </tr>
-              ))}
+              );})}
             </tbody>
           </table>
         </div>
