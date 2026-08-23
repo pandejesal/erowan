@@ -1,63 +1,77 @@
 import Link from "next/link";
 import Image from "next/image";
-import DemoBadge from "@/components/DemoBadge";
-export const metadata = { title: "Mira Cafe — JLT Dubai | Demo" };
-export default function Page() {
+import { menu, chefs, reviews } from "@/lib/mocks/restaurant1";
+
+export const metadata = {
+  title: "Mira Cafe — JLT Dubai | Brunch Menu That Orders on WhatsApp — No Commission",
+  description: "Tap, customize, WhatsApp order — zero Talabat fees. Table reserve + daily reels. JLT mornings to late nights.",
+  alternates: { canonical: "https://erowan.com/demos/restaurant-1" },
+  openGraph: {
+    title: "Mira Cafe — JLT | Demo",
+    description: "Menu that orders, not PDFs • JLT • No commission",
+    url: "https://erowan.com/demos/restaurant-1",
+    images: [{ url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80&auto=format&fit=crop" }],
+  },
+};
+
+export default function Page(){
   return (
-    <div className="min-h-screen bg-[#FFFCF8]">
-      <div className="bg-amber-50 border-b border-amber-200"><div className="mx-auto max-w-7xl px-6 py-2 flex justify-between"><DemoBadge /><Link href="/" className="text-xs underline">← Back</Link></div></div>
-      <header className="sticky top-0 z-20 bg-white/90 backdrop-blur border-b"><div className="mx-auto max-w-7xl px-6 py-3 flex justify-between items-center"><div className="font-serif font-bold">MIRA <span className="font-normal text-zinc-500">CAFE • JLT</span></div><a href="https://wa.me/919999999999" className="px-4 py-2 rounded-full bg-zinc-900 text-white text-xs font-bold">ORDER — AED 38</a></div></header>
+    <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({"@context":"https://schema.org","@type":"Restaurant","name":"Mira Cafe","address":{"@type":"PostalAddress","addressLocality":"JLT Dubai"},"servesCuisine":"Brunch","priceRange":"AED 28–149","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"312"}})}} />
       <section className="mx-auto max-w-7xl px-6 py-8 md:py-12 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <div className="text-xs tracking-widest border px-2 py-1 rounded-full bg-white inline-block">★ 4.7 • JLT • NO COMMISSION</div>
           <h1 className="mt-4 text-4xl md:text-5xl font-serif font-bold leading-tight">Menu that<br /><span className="text-zinc-400">orders, not PDFs.</span></h1>
           <p className="mt-4 text-[17px] leading-7 text-zinc-600 max-w-[48ch]">Tap, customize, WhatsApp order — zero Talabat fees. Table reserve + daily reels. JLT mornings to late nights.</p>
-          <div className="mt-6 flex gap-3"><a href="https://wa.me/919999999999" className="px-6 py-3 bg-zinc-900 text-white rounded-full text-sm font-bold">Order on WhatsApp</a><a href="#menu" className="px-6 py-3 bg-white border rounded-full text-sm font-bold">See menu</a></div>
+          <div className="mt-6 flex gap-3">
+            <Link href="/demos/restaurant-1/order" className="px-6 py-3 bg-zinc-900 text-white rounded-full text-sm font-bold">Order on WhatsApp</Link>
+            <Link href="/demos/restaurant-1/menu" className="px-6 py-3 bg-white border rounded-full text-sm font-bold">See menu</Link>
+          </div>
         </div>
         <Image src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80&auto=format&fit=crop" alt="Mira Cafe" width={800} height={600} className="rounded-2xl h-[420px] w-full object-cover border" />
       </section>
+
       <section className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-3 gap-3">
           <div className="rounded-xl bg-zinc-900 text-white p-4 text-center"><div className="text-xl font-bold">4.7 ★</div><div className="text-xs text-zinc-400">312 reviews</div></div>
-          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">1.2k</div><div className="text-xs text-zinc-500">Orders/mo</div></div>
-          <div className="rounded-xl border p-4 text-center"><div className="text-xl font-bold">15 min</div><div className="text-xs text-zinc-500">Avg. prep</div></div>
+          <div className="rounded-xl border bg-white p-4 text-center"><div className="text-xl font-bold">1.2k</div><div className="text-xs text-zinc-500">Orders/mo</div></div>
+          <div className="rounded-xl border bg-white p-4 text-center"><div className="text-xl font-bold">15 min</div><div className="text-xs text-zinc-500">Avg. prep</div></div>
         </div>
       </section>
-      <section id="menu" className="mx-auto max-w-7xl px-6 py-8">
-        <h2 className="text-2xl font-serif font-bold">Menu — Tap to order</h2>
+
+      <section className="mx-auto max-w-7xl px-6 py-8">
+        <div className="flex items-baseline justify-between"><h2 className="text-2xl font-serif font-bold">Menu — Tap to order</h2><Link href="/demos/restaurant-1/menu" className="text-xs underline tracking-widest">FULL MENU →</Link></div>
         <div className="mt-6 grid md:grid-cols-3 gap-4">
-          {[
-            { name: "Avocado Toast", price: "AED 38", desc: "Sourdough, chili, poach" },
-            { name: "Shakshuka", price: "AED 42", desc: "Two eggs, labneh, pita" },
-            { name: "Mira Burger", price: "AED 55", desc: "Beef, cheddar, fries" },
-            { name: "Iced Spanish Latte", price: "AED 28", desc: "Condensed, oat option" },
-            { name: "Açaí Bowl", price: "AED 45", desc: "Granola, banana, honey" },
-            { name: "Brunch for 2", price: "AED 149", desc: "Share, 10am–2pm" },
-          ].map(s=>(
-            <div key={s.name} className="bg-white border rounded-2xl p-5 flex justify-between hover:shadow-sm">
+          {menu.slice(0,6).map(s=>(
+            <Link key={s.slug} href={`/demos/restaurant-1/menu/${s.slug}`} className="bg-white border rounded-2xl p-5 flex justify-between hover:shadow-sm">
               <div><div className="font-bold">{s.name}</div><div className="text-sm text-zinc-600">{s.desc}</div></div>
               <div className="bg-zinc-900 text-white px-2 py-1 rounded-full text-sm font-bold h-fit">{s.price}</div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
-      <section className="mx-auto max-w-7xl px-6 py-6 grid grid-cols-3 gap-3">
-        <Image src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&auto=format&fit=crop" alt="g1" width={400} height={300} className="rounded-xl h-32 w-full object-cover border" />
-        <Image src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format&fit=crop" alt="g2" width={400} height={300} className="rounded-xl h-32 w-full object-cover border" />
-        <Image src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=600&q=80&auto=format&fit=crop" alt="g3" width={400} height={300} className="rounded-xl h-32 w-full object-cover border" />
+
+      <section className="mx-auto max-w-7xl px-6 py-6">
+        <div className="flex items-baseline justify-between"><h3 className="font-serif font-bold">Chefs</h3><Link href="/demos/restaurant-1/chefs" className="text-xs underline tracking-widest">ALL →</Link></div>
+        <div className="mt-3 grid md:grid-cols-3 gap-4">
+          {chefs.map(c=>(
+            <Link key={c.id} href={`/demos/restaurant-1/chefs/${c.id}`} className="bg-white border rounded-2xl p-4 flex gap-3 hover:shadow-sm">
+              <Image src={c.image} alt={c.name} width={80} height={80} className="h-16 w-16 rounded-full object-cover border" />
+              <div><div className="font-bold">{c.name}</div><div className="text-sm text-zinc-600">{c.role}</div></div>
+            </Link>
+          ))}
+        </div>
       </section>
+
       <section className="mx-auto max-w-7xl px-6 py-6">
         <h3 className="font-serif font-bold">Loved in JLT</h3>
         <div className="mt-3 grid md:grid-cols-3 gap-4">
-          {[
-            "Best avocado toast in JLT — ordered on WhatsApp in 20 seconds.",
-            "No more Talabat fees. Mira’s site is our top channel now.",
-            "Brunch for 2 is our weekend ritual. Booking is flawless.",
-          ].map((t,i)=><div key={i} className="bg-white border rounded-2xl p-5 text-sm">“{t}”<div className="mt-2 text-xs font-bold">— Guest ★★★★★</div></div>)}
+          {reviews.map(r=>(
+            <div key={r.id} className="bg-white border rounded-2xl p-5 text-sm">“{r.text}”<div className="mt-2 text-xs font-bold">— {r.author} ★★★★★</div></div>
+          ))}
         </div>
+        <div className="mt-4 text-center"><Link href="/demos/restaurant-1/reviews" className="text-xs underline tracking-widest">ALL REVIEWS →</Link></div>
       </section>
-      <section className="mx-auto max-w-7xl px-6 py-8 bg-zinc-900 text-white rounded-2xl flex justify-between items-center"><div><div className="font-bold">Reserve a table — JLT</div><div className="text-sm text-zinc-400">WhatsApp in 20 seconds • Open 8am–11pm</div></div><a href="https://wa.me/919999999999" className="px-6 py-3 bg-white text-zinc-900 rounded-full font-bold">Reserve →</a></section>
-      <div className="mx-auto max-w-7xl px-6 py-6 text-xs text-zinc-500 text-center">Concept demo by Erowan — your cafe in 48h.</div>
     </div>
   );
 }

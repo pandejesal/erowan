@@ -1,4 +1,8 @@
+"use client";
+import { usePathname } from "next/navigation";
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/lab")) return null;
   return (
     <footer id="contact" className="border-t-[1.5px] border-[var(--line)] bg-[var(--ink)] text-white">
       <div className="mx-auto max-w-7xl px-6 py-8 grid md:grid-cols-3 gap-8 text-sm">

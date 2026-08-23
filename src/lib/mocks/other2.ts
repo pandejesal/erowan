@@ -1,0 +1,36 @@
+export type Product = { slug: string; name: string; price: string; priceNum: number; desc: string; longDesc: string; image: string; gallery: string[]; category:"ceramics"|"textiles"|"wood"; stock: number; dims: string; materials: string[]; handmade: boolean; featured?: boolean };
+export type Stockist = { id: string; name: string; city: string; address: string };
+export type Post = { slug: string; title: string; excerpt: string; image: string; date: string; body: string };
+export type Collection = { slug: string; name: string; desc: string; image: string; productSlugs: string[] };
+
+export const products: Product[] = [
+  { slug:"ceramic-mug", name:"Ceramic Mug", price:"$28", priceNum:28, desc:"Wheel-thrown • 12oz", longDesc:"Wheel-thrown in Navy Yard, glazed matte white. 12oz, dishwasher safe. Small batch 24.", image:"https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?w=800&q=80&auto=format&fit=crop", gallery:["https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=400&q=80&auto=format&fit=crop"], category:"ceramics", stock:8, dims:`3.2" × 4.2"`, materials:["Stoneware","Matte glaze"], handmade:true, featured:true },
+  { slug:"linen-apron", name:"Linen Apron", price:"$45", priceNum:45, desc:"Heavy linen • 2 pockets", longDesc:"Heavy linen, 2 pockets, indigo-dyed. Sewn Brooklyn. Pre-washed.", image:"https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80&auto=format&fit=crop", gallery:["https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400&q=80&auto=format&fit=crop"], category:"textiles", stock:12, dims:`28" × 34"`, materials:["European linen","Natural dye"], handmade:true },
+  { slug:"wood-board", name:"Wood Board", price:"$60", priceNum:60, desc:"Walnut • Oiled", longDesc:"Walnut end-grain, oiled with food-grade. Brooklyn milled. Heirloom.", image:"https://images.unsplash.com/photo-1582738411706-bfc82e952a5a?w=800&q=80&auto=format&fit=crop", gallery:["https://images.unsplash.com/photo-1582738411706-bfc82e952a5a?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=400&q=80&auto=format&fit=crop"], category:"wood", stock:5, dims:`14" × 10" × 1.5"`, materials:["Black walnut","Food oil"], handmade:true },
+  { slug:"throw-pillow", name:"Throw Pillow", price:"$38", priceNum:38, desc:"Block print • 18”", longDesc:"Block-printed, 18 inch, linen cover. Insert included. Natural dyes.", image:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80&auto=format&fit=crop", gallery:["https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80&auto=format&fit=crop"], category:"textiles", stock:15, dims:`18" × 18"`, materials:["Linen","Block print"], handmade:true },
+  { slug:"ceramic-bowl", name:"Ceramic Bowl", price:"$32", priceNum:32, desc:"Set of 2 • Matte", longDesc:"Set of 2 bowls, matte speckled glaze. Wheel-thrown, 5.5 inch.", image:"https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80&auto=format&fit=crop", gallery:["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80&auto=format&fit=crop"], category:"ceramics", stock:9, dims:`5.5" dia`, materials:["Stoneware","Speckle glaze"], handmade:true },
+  { slug:"table-runner", name:"Table Runner", price:"$55", priceNum:55, desc:"Indigo dye • 72”", longDesc:"Indigo-dyed linen runner, 72 inches. Hand-dipped 4x, 2 friends story.", image:"https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80&auto=format&fit=crop", gallery:["https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80&auto=format&fit=crop","https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=400&q=80&auto=format&fit=crop"], category:"textiles", stock:7, dims:`14" × 72"`, materials:["Linen","Indigo"], handmade:true, featured:true },
+];
+
+export const collections: Collection[] = [
+  { slug:"ceramics", name:"Ceramics", desc:"Wheel-thrown mug + bowl. Matte glaze, Navy Yard.", image:"https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?w=600&q=80&auto=format&fit=crop", productSlugs:["ceramic-mug","ceramic-bowl"] },
+  { slug:"textiles", name:"Textiles", desc:"Linen apron, pillow, runner — natural dyes.", image:"https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80&auto=format&fit=crop", productSlugs:["linen-apron","throw-pillow","table-runner"] },
+  { slug:"wood", name:"Wood", desc:"Walnut board — oiled, heirloom.", image:"https://images.unsplash.com/photo-1582738411706-bfc82e952a5a?w=600&q=80&auto=format&fit=crop", productSlugs:["wood-board"] },
+];
+
+export const stockists: Stockist[] = [
+  { id:"bk", name:"Brooklyn General", city:"Brooklyn", address:"63 Flushing Ave, Navy Yard, Brooklyn NY 11205" },
+  { id:"mh", name:"Makers Manhattan", city:"Manhattan", address:"127 Prince St, SoHo, NY 10012" },
+  { id:"la", name:"Heirloom LA", city:"Los Angeles", address:"839 N Spring St, LA CA 90012" },
+  { id:"ldn", name:"Craft London", city:"London", address:"12 Shoreditch High St, London E1 6PG" },
+];
+
+export const posts: Post[] = [
+  { slug:"wheel-vs-slip", title:"Wheel-thrown vs Slip-cast", excerpt:"Why we throw every mug — weight, glaze, ritual.", image:"https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?w=600&q=80&auto=format&fit=crop", date:"2026-03-14", body:"Slip-cast is fast. Wheel-thrown is ritual. We throw 24 mugs a week, each glazed by hand in Navy Yard. The weight tells you." },
+  { slug:"natural-dyes-2026", title:"Natural Dyes 2026", excerpt:"Indigo 4 dips — how we dye linen in Brooklyn.", image:"https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80&auto=format&fit=crop", date:"2026-04-18", body:"Indigo from extraction to 4 dips. Linen apron + runner, small batch, no mass." },
+  { slug:"no-etsy-fees", title:"No Etsy Fees — sell on your own site", excerpt:"48h site, worldwide shipping, keep the 15%.", image:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80&auto=format&fit=crop", date:"2026-05-05", body:"Etsy takes 15%. Your own site with Erowan ships worldwide in 3 days, 48h live, no fees. Brooklyn to worldwide." },
+];
+
+export const getProduct=(slug:string)=>products.find(p=>p.slug===slug);
+export const getCollection=(slug:string)=>collections.find(c=>c.slug===slug);
+export const getPost=(slug:string)=>posts.find(p=>p.slug===slug);

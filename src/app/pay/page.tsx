@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import PayPrefill from "./PayPrefill";
 
 export const metadata: Metadata = {
   title: "Pay — Erowan $250 base | Wise / PayPal / Card",
@@ -8,6 +10,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 space-y-6">
+      <Suspense fallback={null}><PayPrefill /></Suspense>
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Pay & Book</h1>
         <p className="mt-2 text-zinc-600">Ahmedabad → Worldwide. Pick your tier, pay via Wise/PayPal/card, we ship in 48h. Invoice within 1 hour.</p>

@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
+import SmoothScroll from "@/components/SmoothScroll";
+import PageTransition from "@/components/PageTransition";
 
 const display = Fraunces({ subsets: ["latin"], weight: ["700","800","900"], variable: "--font-display", display: "swap" });
 const body = Instrument_Sans({ subsets: ["latin"], weight: ["400","500","600"], variable: "--font-body", display: "swap" });
@@ -38,9 +40,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${display.variable} ${body.variable} ${mono.variable} antialiased bg-[var(--paper)] text-[var(--ink)]`}>
-        <Header />
-        <main id="main-content" className="min-h-[60vh]">{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Header />
+          <main id="main-content" className="min-h-[60vh]">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+        </SmoothScroll>
         <Analytics />
       </body>
     </html>
