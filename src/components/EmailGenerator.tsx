@@ -32,6 +32,16 @@ Demo: ${v.demo} — page: https://erowan.com/clinics`,
 Hi ${v.name || "there"} — portals keep leads. Your site should capture via WhatsApp filter (beds/area/AED).
 
 Demo: ${v.demo} — page: https://erowan.com/real-estate`,
+
+  other: (v)=> `Subject: quick idea for ${v.business} — ${v.city}
+
+Hi ${v.name || "there"} — saw ${v.business} in ${v.city}. If clients Google you and find no clear site — you lose them.
+
+I rebuilt a concept demo tailored to your business: ${v.demo} (concept, not live) — see catch-all page https://erowan.com/other — custom hero + WhatsApp + AED pricing, 48h $250 base.
+
+Want a 60-sec Loom of 3 fixes? No pitch.
+
+— Erowan, Ahmedabad → Gulf, 48h, $250 base`,
 };
 
 type Vars = { business: string; city: string; name: string; demo: string; niche: string };

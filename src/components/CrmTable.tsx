@@ -100,8 +100,8 @@ export default function CrmTable() {
   const update = (id: string, patch: Partial<Lead>) => setLeads(leads.map(l => l.id === id ? { ...l, ...patch } : l));
   const remove = (id: string) => setLeads(leads.filter(l => l.id !== id));
   const exportCsv = () => {
-    const header = "Business,Niche,City,Contact,Source,URL,SentDate,Status,Reply,Notes";
-    const rows = leads.map(l => [l.business,l.niche,l.city,l.contact,l.source,l.url||"",l.sentDate,l.status,l.reply?"Yes":"No",`"${(l.notes||"").replace(/"/g,'""')}"`].join(","));
+    const header = "Business,Niche,City,Contact,Source,URL,SentDate,F1,F2,F3,Status,Reply,Notes";
+    const rows = leads.map(l => [l.business,l.niche,l.city,l.contact,l.source,l.url||"",l.sentDate,l.follow1||"",l.follow2||"",l.follow3||"",l.status,l.reply?"Yes":"No",`"${(l.notes||"").replace(/"/g,'""')}"`].join(","));
     const blob = new Blob([header+"\n"+rows.join("\n")], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a"); a.href = url; a.download = "erowan-crm.csv"; a.click();
@@ -113,7 +113,7 @@ export default function CrmTable() {
         <span className="font-semibold">Daily cap guard:</span> {todaySent}/30 sent today. {todaySent>=30 ? "STOP — risk of IG/Gmail ban. Resume tomorrow." : todaySent>=20 ? "Caution — 20–30 is safe free limit." : "Safe — you can send more today."}
       </div>
 
-      <div className="grid md:grid-cols-4 gap-2">
+      <div className="grid md:grid-cols-5 gap-2">
         {metrics.map(m => (
           <div key={m.niche} className="rounded-xl border border-zinc-200 p-3 bg-white">
             <div className="text-xs uppercase tracking-widest text-zinc-500">{m.niche}</div>
@@ -150,27 +150,35 @@ export default function CrmTable() {
               <tr>
                 <th className="text-left p-2">Business</th>
                 <th className="text-left p-2">Niche</th>
+                <th className="text-left p-2">City</th>
                 <th className="text-left p-2">Contact</th>
                 <th className="text-left p-2">Sent</th>
+                <th className="text-left p-2">F1</th>
+                <th className="text-left p-2">F2</th>
+                <th className="text-left p-2">F3</th>
                 <th className="text-left p-2">Status</th>
                 <th className="text-left p-2">Reply</th>
                 <th className="text-left p-2"></th>
               </tr>
             </thead>
             <tbody>
-              {leads.length===0 && <tr><td colSpan={7} className="p-6 text-center text-zinc-500">No leads yet — add 20-30/day max.</td></tr>}
+              {leads.length===0 && <tr><td colSpan={11} className="p-6 text-center text-zinc-500">No leads yet — add 20-30/day max.</td></tr>}
               {leads.map(l=> (
                 <tr key={l.id} className="border-t border-zinc-100">
-                  <td className="p-2"><div className="font-medium">{l.business}</div><div className="text-xs text-zinc-500">{l.city} • {l.url||""}</div></td>
+                  <td className="p-2"><div className="font-medium">{l.business}</div><div className="text-xs text-zinc-500 truncate max-w-[160px]">{l.url||""}</div></td>
                   <td className="p-2 text-xs">{l.niche}</td>
-                  <td className="p-2 text-xs break-all">{l.contact}</td>
-                  <td className="p-2 text-xs">{l.sentDate}</td>
+                  <td className="p-2 text-xs">{l.city}</td>
+                  <td className="p-2 text-xs break-all max-w-[150px]">{l.contact}</td>
+                  <td className="p-2"><input type="date" value={l.sentDate} onChange={e=>update(l.id,{ sentDate: e.target.value })} className="border rounded-lg px-1 py-1 text-xs w-[120px]" /></td>
+                  <td className="p-1"><input type="date" value={l.follow1||""} onChange={e=>update(l.id,{ follow1: e.target.value })} className="border rounded-lg px-1 py-1 text-xs w-[120px]" /></td>
+                  <td className="p-1"><input type="date" value={l.follow2||""} onChange={e=>update(l.id,{ follow2: e.target.value })} className="border rounded-lg px-1 py-1 text-xs w-[120px]" /></td>
+                  <td className="p-1"><input type="date" value={l.follow3||""} onChange={e=>update(l.id,{ follow3: e.target.value })} className="border rounded-lg px-1 py-1 text-xs w-[120px]" /></td>
                   <td className="p-2">
                     <select value={l.status} onChange={e=>update(l.id,{ status: e.target.value as Lead["status"]})} className="border rounded-lg px-2 py-1 text-xs">
                       <option>Not Sent</option><option>Sent</option><option>Replied</option><option>Meeting</option><option>Closed Won</option><option>Closed Lost</option>
                     </select>
                   </td>
-                  <td className="p-2"><input type="checkbox" checked={l.reply} onChange={e=>update(l.id,{ reply: e.target.checked })} /></td>
+                  <td className="p-2 text-center"><input type="checkbox" checked={l.reply} onChange={e=>update(l.id,{ reply: e.target.checked })} /></td>
                   <td className="p-2"><button onClick={()=>remove(l.id)} className="text-xs text-red-600">Del</button></td>
                 </tr>
               ))}

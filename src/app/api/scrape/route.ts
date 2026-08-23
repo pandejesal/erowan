@@ -1,15 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
+import * as cheerio from "cheerio";
 
 export const dynamic = "force-dynamic";
 
 function analyzeHtml(html: string, url: string) {
   const lower = html.toLowerCase();
-  const hasBooking = /book|appointment|reserve|schedule/.test(lower);
-  const hasWhatsApp = /wa\.me|whatsapp|api\.whatsapp/.test(lower);
-  const hasTel = /tel:|call us/.test(lower);
-  const hasViewport = /<meta[^>]*viewport/.test(lower);
-  const hasArabic = /lang=["']ar["']|dir=["']rtl["']|العربية/.test(lower);
-  const hasReviews = /google.*review|reviews|testimonial/.test(lower);
+  let hasBooking = /book|appointment|reserve|schedule/.test(lower);
+  let hasWhatsApp = /wa\.me|whatsapp|api\.whatsapp/.test(lower);
+  let hasTel = /tel:|call us/.test(lower);
+  let hasViewport = /<meta[^>]*viewport/.test(lower);
+  let hasArabic = /lang=["']ar["']|dir=["']rtl["']|العربية/.test(lower);
+  let hasReviews = /google.*review|reviews|testimonial/.test(lower);
+
+  try {
+    const $ = cheerio.load(html);
+    const text = $("body").text().toLowerCase();
+    if (/book|appointment|reserve|schedule|حجز|موعد/.test(text)) hasBooking = true;
+    if ($('a[href*="wa.me"], a[href*="whatsapp"], a[href*="api.whatsapp"]').length > 0) hasWhatsApp = true;
+    if ($('a[href^="tel:"]').length > 0) hasTel = true;
+    if ($('meta[name="viewport"]').length > 0) hasViewport = true;
+    if ($('html[lang="ar"], html[dir="rtl"], [lang="ar"], [dir="rtl"]').length > 0 || /العربية/.test(html)) hasArabic = true;
+    if ($('[class*="review"], [class*="testimonial"], [id*="review"]').length > 0 || /google.*review|testimonial|reviews/.test(text)) hasReviews = true;
+    // CTA thumb-reachable check via fixed bottom CTA or header CTA
+    // booking CTA includes buttons with booking keywords
+    const bookingBtn = $('button, a').filter((_, el) => /book|reserve|appointment|whatsapp|wa\.me/i.test($(el).text() + $(el).attr("href") || "")).length > 0;
+    if (bookingBtn) hasBooking = hasBooking || true;
+  } catch {
+    // fallback to regex above
+  }
+
   const noBookingPain = !hasBooking && !hasWhatsApp;
   const mobilePain = !hasViewport;
   const ctaPain = !hasWhatsApp && !hasTel;
@@ -23,9 +42,9 @@ function analyzeHtml(html: string, url: string) {
   if (!hasArabic) pains.push("No Arabic toggle detected");
 
   const checklist = [
-    { label: "Booking / WhatsApp CTA", pass: hasBooking || hasWhatsApp, detail: hasWhatsApp ? "WhatsApp found" : hasBooking ? "Booking keyword found" : "None found" },
+    { label: "Booking / WhatsApp CTA", pass: hasBooking || hasWhatsApp, detail: hasWhatsApp ? "WhatsApp found (cheerio)" : hasBooking ? "Booking keyword found" : "None found — verify manually" },
     { label: "Phone CTA", pass: hasTel || hasWhatsApp, detail: hasTel ? "tel: found" : hasWhatsApp ? "WhatsApp as CTA" : "No phone CTA" },
-    { label: "Mobile viewport", pass: hasViewport, detail: hasViewport ? "viewport meta present" : "Missing viewport meta" },
+    { label: "Mobile viewport", pass: hasViewport, detail: hasViewport ? "viewport meta present (cheerio)" : "Missing viewport meta" },
     { label: "Arabic/RTL", pass: hasArabic, detail: hasArabic ? "Arabic/RTL detected" : "Not detected" },
     { label: "Reviews", pass: hasReviews, detail: hasReviews ? "Reviews keyword found" : "No reviews keyword" },
   ];
